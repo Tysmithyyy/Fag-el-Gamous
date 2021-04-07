@@ -25,6 +25,8 @@ namespace Fag_el_Gamous.Controllers
 
         public IActionResult BurialRecords()
         {
+            int pageSize = 10;
+
             return View();
         }
 
