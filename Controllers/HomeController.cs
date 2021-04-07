@@ -23,10 +23,21 @@ namespace Fag_el_Gamous.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult BurialRecords()
         {
             return View();
         }
+
+        public IActionResult ResearcherPage()
+        {
+            return View();
+        }
+
+        public IActionResult AdminPage()
+        {
+            return View();
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
