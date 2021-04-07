@@ -30,6 +30,21 @@ namespace Fag_el_Gamous.Controllers
             return View();
         }
 
+        /*public async Task<IActionResult> BurialRecords(string searchString)
+        {
+             var records = from m in context
+              select m;
+
+             if (!String.IsNullOrEmpty(searchString))
+             {
+                 movies = movies.Where(s => s.Title.Contains(searchString));
+             }
+
+            return View();
+
+            await movies.ToListAsync()
+        }*/
+
         public IActionResult ResearcherPage()
         {
             return View();

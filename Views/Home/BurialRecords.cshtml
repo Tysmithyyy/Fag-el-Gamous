@@ -4,27 +4,31 @@
 
 <!--filters-->
 
-<div>
+<div></div>
 
-</div>
-<input class="form-control" id="searchTable" type="text" placeholder="Search..">
-<br />
-<table>
-    <thead>
-        <tr>
-            <th>Col</th>
-            <th>Col</th>
-            <th>Col</th>
-            <th>Col</th>
-        </tr>
-    </thead>
-    <tbody id>
-        <tr>
-            <td>Row</td>
-            <td>Row</td>
-            <td>Row</td>
-            <td>Row</td>
-        </tr>
-    </tbody>
-</table>
-<div class="pagination" page-info="@Model.PageNumberingInfo"></div>
+    <form asp-controller="Home" asp-action="BurialRecords">
+        <p>
+            <input type="text" name="SearchString" />
+            <input type="submit" value="Filter" />
+        </p>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Col</th>
+                <th>Col</th>
+                <th>Col</th>
+                <th>Col</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Row</td>
+                <td>Row</td>
+                <td>Row</td>
+                <td>Row</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="pagination"></div>
