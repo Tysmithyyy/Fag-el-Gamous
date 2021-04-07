@@ -5,4 +5,8 @@
     <RootNamespace>Fag_el_Gamous</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\img\" />
+  </ItemGroup>
+
 </Project>
