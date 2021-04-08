@@ -1,7 +1,6 @@
 ﻿
 <div class="text-center">
     <h1 class="display-4">The Fag el-Gamous Ancient Burial Site</h1> <br /><br />
-    <h4 class="text-center text-danger">Fag el-Gamous translates to "Way of the Water Buffalo." </h4>
 </div>
 <br /><br />
 
@@ -17,19 +16,22 @@
 
         <!--right side for information-->
         <div class="col-7">
+            <h4 class="text-center text-danger">Fag el-Gamous translates to "Way of the Water Buffalo." </h4>
             <p>
                 The Fag el-Gamous ancient burial site is located on the eastern edge of the Fayoum Depression, approximately 55 miles (90 km) south of Cairo, Egypt.
                 During multiple years of study, researchers have excavated more than 1,000 mummies that have provided a plethora of knowledge and understanding about ancient cultures.
+                This site has yielded vast amounts of archaeological evidence that the researchers at BYU want to make available to the public, as they believe that the data is beneficial to many scholars around the world.
             </p>
+           
             <br />
             <p>
                 This ancient burial site has been under archeological investigation (primarily by Brigham Young University researchers) for over 25 years.
                 This Graeco-Roman cemetery is one that also includes a Graeco-Roman township,
                 some Middle Kingdom tombs, and a small Old Kingdom pyramid that dates to Pharaoh Snefru (circa 2613–2589 BCE; Dynasty IV).
-                The majority of BYU's excavation efforts since 1990 have been concentrated in the Graeco-Roman cemetery.
+                The majority of BYU's excavation efforts since 1996 have been concentrated in the Graeco-Roman cemetery.
             </p>
             <br /><br />
-           
+
         </div>
     </div>
 </div>
@@ -43,21 +45,38 @@
 
         <!--left side for text-->
         <div class="col-7">
+            <h4 class="text-center text-danger">BYU Egypt Excavation Project </h4>
             <p>
-                <b>Thanks to the efforts of Brigham Young University students and faculty, the archaelogical data from the Fag el-Gamous burial site has been made available to the public.</b>
-                Click <a asp-action="BurialRecords">here</a> to see the complete record of the excavations from the Fag el-Gamous site. <br />
+                Thanks to the efforts of Brigham Young University students and faculty, <b>the archaelogical data from the Fag el-Gamous burial site has been made available to the public.</b>
+                Click <a asp-action="BurialRecords"> <i>here</i> </a> to see the complete record of the excavations from the Fag el-Gamous site. <br />
             </p>
 
             <p>
-                Each “dig” record contains different archaeological data, including location of the dig, gender of the specimen, hair color, skull and other bone measurements, and even information about different artifacts that were found.
-                The digs are organized and labeled using a grid system. Each locational square is defined by the coordinates North (N), East (E), South (S), and West (W) of an origin.
+                Since the excavation began at Fag el-Gamous, BYU researchers have been collecting the data in field notes, spreadsheets, and simple databases to record different information about each dig.
+                Information about the location of the dig, the physical orientation of the body in the ground, burial depth, hair color, textile wrapping, gender, age, bone dimensions, items accompanying the mummy,
+                and much more has been recorded for each burial site found. Offsite researchers have performed a variety of different analyses on excavated materials including carbon dating and DNA sequencing.
+                <b>Now that the data has been moved to an online platform, anyone in the world can access the burial records from Fag el-Gamous</b>
 
             </p>
             <br />
             <p>
-                It is common for two numbers to designate the distance from the origin in a direction (e.g., N 190/200 or E 40/50). Those squares are then subdivided
-                into the Northwest (NW), Northeast (NE), Southeast (SE) or Southwest (SW) quadrant (section) of the square. An example burial location is: N 190/200 E 40/50 SE.
-                Because many mummies (usually 40 or more) are found in each location, a number is assigned (e.g., N 190/200 E 40/50 SE #9) to uniquely identify each burial that is found within each grid square.
+                To begin to understand how each the dig record is uniquely identified, we first need to understand how the Fag el-Gamous excavation site is split up. The site is organized using a grid system where a square is defined by the coordinate North,
+                South, East, or West from a single origin point. Each square of the grid system is then subdivided into the Northwest, Northeast, Southeast, or Southwest quadrants within the grid square (i.e. each grid “square” within the grid system is further
+                divided into 4 smaller parts called “quadrants” to keep accurate location records for each record). Because many mummies (usually 40 or more) are found in each grid square, a number is assigned (eg. #9) to uniquely identify each burial that is found within each grid
+                square.
+            </p>
+            <br />
+            <p>
+
+                Each dig record is currently identified by a composite key called Burial_Id. This composite key consists of the coordinates (N, S, E, or W) of an origin, combined with the quadrant (NW, NE, SE, or SW) within the grid square. Lastly, a number is assigned to each burial
+                within a square and quadrant pairing. An example burial location is “N 190/200 E 40/50 SE #9.”
+
+            </p>
+            <br />
+            <p>
+                Users should be aware that each dig record may not contain the same types of information. For example, where the gender may be available for one record, the gender may not be identifiable in another. In short, every field entry of the database (excluding the key and location fields) can be null.
+                This does not indicate that the dig record is incorrect or incomplete; rather a missing field indicates that the information was not available to the researchers or is still under investigation.
+
             </p>
 
 
