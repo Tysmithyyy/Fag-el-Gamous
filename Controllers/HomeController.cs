@@ -74,6 +74,7 @@ namespace Fag_el_Gamous.Controllers
             if (ModelState.IsValid)
             {
                 _context.MainTbl.Add(mainTbl);
+                _context.SaveChanges();
                 return RedirectToAction("BurialRecords");
             }
             return View();
