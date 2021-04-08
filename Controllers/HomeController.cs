@@ -68,7 +68,18 @@ namespace Fag_el_Gamous.Controllers
 
             await movies.ToListAsync()
         }*/
+        [HttpPost]
+        public IActionResult Add_Edit(MainTbl mainTbl)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.MainTbl.Add(mainTbl);
+                return RedirectToAction("BurialRecords");
+            }
+            return View();
+        }
 
+        [HttpGet]
         public IActionResult Add_Edit()
         {
             return View();

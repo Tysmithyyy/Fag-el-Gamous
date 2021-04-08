@@ -19,20 +19,20 @@
         <thead class="thead-dark">
             <tr>
                 <th>Burial ID</th>
-                <th>Col</th>
-                <th>Col</th>
-                <th>Col</th>
-                <th>Col</th>
-                <th>Col</th>
+                <th>Burial Location (North/South)</th>
+                <th>Burial Location (East/West)</th>
+                <th>Length of Remains</th>
+                <th></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
             @foreach (var x in Model.Records) { 
             <tr>
                 <td>@x.BurialId</td>
-                <td></td>
-                <td>Row</td>
-                <td>Row</td>
+                <td>@x.BurialLocationNs</td>
+                <td>@x.BurialLocationEw</td>
+                <td>@x.LengthOfRemains</td>
                 <td><button class="btn btn-outline-success my-2 my-sm-0">@Html.ActionLink("Edit", "Edit", "Home")</button></td>
                 <td><button class="btn btn-outline-success my-2 my-sm-0">@Html.ActionLink("Delete", "Delete", "Home")</button></td>
             </tr>

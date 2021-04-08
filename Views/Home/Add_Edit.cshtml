@@ -1,29 +1,34 @@
-﻿<h1>Researcher Page</h1>
+﻿@model MainTbl
 
-<form asp-action="AddBurialForm" method="post">
+<h1>Researcher Page</h1>
+
+<form asp-action="Add_Edit" method="post">
     <div>
-        <label>Trait</label>
-        <input />
+        <label asp-for="BurialId">Burial ID</label>
+        <input asp-for="BurialId" />
     </div>
 
     <div>
-        <label>Trait</label>
-        <input />
+        <label asp-for="BurialLocationNs">Burial Location (North/South)</label>
+        <select asp-for="BurialLocationNs">
+            <option value="">Select One</option>
+            <option value="N">North</option>
+            <option value="S">South</option>
+        </select>
     </div>
 
     <div>
-        <label>Trait</label>
-        <input />
+        <label asp-for="BurialLocationEw">Burial Location (East/West)</label>
+        <select asp-for="BurialLocationEw">
+            <option value="">Select One</option>
+            <option value="E">East</option>
+            <option value="W">West</option>
+        </select>
     </div>
 
     <div>
-        <label>Trait</label>
-        <input />
-    </div>
-
-    <div>
-        <label>Trait</label>
-        <input />
+        <label asp-for="LengthOfRemains">Length of Remains</label>
+        <input asp-for="LengthOfRemains"/>
     </div>
 
     <div asp-validation-summary="All"></div>
