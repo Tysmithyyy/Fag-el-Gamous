@@ -10,6 +10,8 @@
     <form class="form-inline">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        <br />
+        <button class="btn btn-outline-success">@Html.ActionLink("Add", "Add", "Home")</button>
     </form>
 </nav>
 
@@ -20,16 +22,20 @@
                 <th>Col</th>
                 <th>Col</th>
                 <th>Col</th>
+                <th>Col</th>
+                <th>Col</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var x in Model.Records) { 
-                <tr>
-                    <td>@x.BurialId</td>
-                    <td>Row</td>
-                    <td>Row</td>
-                    <td>Row</td>
-                </tr>
+            <tr>
+                <td>@x.BurialId</td>
+                <td>Row</td>
+                <td>Row</td>
+                <td>Row</td>
+                <td><button class="btn btn-outline-success my-2 my-sm-0">@Html.ActionLink("Edit", "Edit", "Home")</button></td>
+                <td><button class="btn btn-outline-success my-2 my-sm-0">@Html.ActionLink("Delete", "Delete", "Home")</button></td>
+            </tr>
             }
             
         </tbody>

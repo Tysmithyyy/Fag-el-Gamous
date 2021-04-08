@@ -22,6 +22,11 @@ namespace Fag_el_Gamous.Controllers
 
         }
 
+        public IActionResult Add()
+        {
+            return View("Add_Edit");
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -64,7 +69,7 @@ namespace Fag_el_Gamous.Controllers
             await movies.ToListAsync()
         }*/
 
-        public IActionResult ResearcherPage()
+        public IActionResult Add_Edit()
         {
             return View();
         }
