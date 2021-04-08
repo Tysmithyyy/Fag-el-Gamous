@@ -36,21 +36,72 @@ namespace Fag_el_Gamous.Infrastructure
 
             TagBuilder finishedTag = new TagBuilder("div");
 
-            for (int i = 1; i < PageInfo.NumPages; i++)
+            //Tag builder for previous
+            TagBuilder previouslistTag = new TagBuilder("div");
+            TagBuilder previousindividualTag = new TagBuilder("a");
+
+            if (PageInfo.CurrentPage == 0)
             {
-                TagBuilder listTag = new TagBuilder("div");
-                TagBuilder individualTag = new TagBuilder("a");
-
-                listTag.Attributes["class"] = "page-item";
-
-                KeyValuePairs["pageNum"] = i;
-                individualTag.Attributes["href"] = urlHelp.Action("Index", KeyValuePairs);
-                individualTag.Attributes["class"] = "page-link text-dark";
-                individualTag.InnerHtml.Append(i.ToString());
-
-                listTag.InnerHtml.AppendHtml(individualTag);
-                finishedTag.InnerHtml.AppendHtml(listTag);
+                previouslistTag.Attributes["class"] = "page-item disabled";
             }
+            else
+            {
+                previouslistTag.Attributes["class"] = "page-item text-dark";
+            };
+
+            KeyValuePairs["pageNum"] = PageInfo.CurrentPage - 1;
+            previousindividualTag.Attributes["href"] = urlHelp.Action("BurialRecords", KeyValuePairs);
+            previousindividualTag.Attributes["class"] = "page-link";
+            previousindividualTag.InnerHtml.Append("Previous");
+
+            previouslistTag.InnerHtml.AppendHtml(previousindividualTag);
+            finishedTag.InnerHtml.AppendHtml(previouslistTag);
+
+            for (int i = PageInfo.CurrentPage - 2; i < PageInfo.CurrentPage + 3; i++)
+            {
+                if (i >= 0 && i < (PageInfo.NumPages + 1))
+                {
+                    TagBuilder listTag = new TagBuilder("div");
+                    TagBuilder individualTag = new TagBuilder("a");
+
+                    if (i == (PageInfo.CurrentPage))
+                    {
+                        listTag.Attributes["class"] = "page-item active";
+                        individualTag.Attributes["class"] = "page-link text-light";
+                    }
+                    else { 
+                        listTag.Attributes["class"] = "page-item";
+                        individualTag.Attributes["class"] = "page-link text-dark";
+                    };
+                    KeyValuePairs["pageNum"] = i;
+                    individualTag.Attributes["href"] = urlHelp.Action("BurialRecords", KeyValuePairs);
+                    individualTag.InnerHtml.Append((i + 1).ToString());
+
+                    listTag.InnerHtml.AppendHtml(individualTag);
+                    finishedTag.InnerHtml.AppendHtml(listTag);
+                };
+            }
+
+            //Tag builder for next
+            TagBuilder nextlistTag = new TagBuilder("div");
+            TagBuilder nextindividualTag = new TagBuilder("a");
+
+            if (PageInfo.CurrentPage == (PageInfo.NumPages))
+            {
+                nextlistTag.Attributes["class"] = "page-item disabled";
+            }
+            else
+            {
+                nextlistTag.Attributes["class"] = "page-item text-dark";
+            };
+
+            KeyValuePairs["pageNum"] = PageInfo.CurrentPage + 1;
+            nextindividualTag.Attributes["href"] = urlHelp.Action("BurialRecords", KeyValuePairs);
+            nextindividualTag.Attributes["class"] = "page-link";
+            nextindividualTag.InnerHtml.Append("Next");
+
+            nextlistTag.InnerHtml.AppendHtml(nextindividualTag);
+            finishedTag.InnerHtml.AppendHtml(nextlistTag);
 
             output.Content.AppendHtml(finishedTag.InnerHtml);
 

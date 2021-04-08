@@ -1,4 +1,5 @@
 ﻿using Fag_el_Gamous.Models;
+using Fag_el_Gamous.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -26,11 +27,26 @@ namespace Fag_el_Gamous.Controllers
             return View();
         }
 
-        public IActionResult BurialRecords()
+        public IActionResult BurialRecords(int pageNum = 0)
         {
             int pageSize = 10;
 
-            return View(_context.MainTbl.ToList());
+            return View(new RecordsViewModel
+            {
+                Records =
+                (_context.MainTbl
+                .OrderBy(r => r.BurialId)
+                .Skip((pageNum - 1) * pageSize)
+                .Take(pageSize)
+                .ToList()),
+                PageNumberingInfo = new PageNumberingInfo
+                {
+                    NumItemsPerPage = pageSize,
+                    CurrentPage = pageNum,
+                    //get the count of items and if there is a specified team get the count for that team.
+                    TotalNumItems = (_context.MainTbl.Count())
+                }
+            });
         }
 
         /*public async Task<IActionResult> BurialRecords(string searchString)

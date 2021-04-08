@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MainTbl>
+﻿@model RecordsViewModel
 
 <h1>Burial Records page</h1>
 
@@ -6,26 +6,24 @@
 
 <!--filters-->
 
-<div></div>
-
-    <form asp-controller="Home" asp-action="BurialRecords">
-        <p>
-            <input type="text" name="SearchString" />
-            <input type="submit" value="Filter" />
-        </p>
+<nav class="navbar navbar-light bg-light">
+    <form class="form-inline">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
+</nav>
 
-    <table>
-        <thead>
+    <table class="table table-hover">
+        <thead class="thead-dark">
             <tr>
-                <th>Col</th>
+                <th>Burial ID</th>
                 <th>Col</th>
                 <th>Col</th>
                 <th>Col</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var x in Model) { 
+            @foreach (var x in Model.Records) { 
                 <tr>
                     <td>@x.BurialId</td>
                     <td>Row</td>
@@ -36,4 +34,4 @@
             
         </tbody>
     </table>
-    <div class="pagination"></div>
+    <div class="pagination" page-info="@Model.PageNumberingInfo"></div>
