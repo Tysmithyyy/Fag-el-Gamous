@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 // Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
 // If you have enabled NRTs for your project, then un-comment the following line:
@@ -10,7 +9,6 @@ namespace Fag_el_Gamous.Models
 {
     public partial class MainTbl
     {
-        [Required]
         public string BurialId { get; set; }
         public string BurialLocationNs { get; set; }
         public string BurialLocationEw { get; set; }
