@@ -1,6 +1,8 @@
+using Fag_el_Gamous.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -24,6 +26,9 @@ namespace Fag_el_Gamous
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddDbContext<gamousContext>(options =>
+               options.UseSqlite(Configuration["ConnectionStrings:GamousDbConnection"])
+            );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

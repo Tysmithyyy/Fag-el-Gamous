@@ -12,10 +12,13 @@ namespace Fag_el_Gamous.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private gamousContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, gamousContext ctx)
         {
             _logger = logger;
+            _context = ctx;
+
         }
 
         public IActionResult Index()
@@ -27,7 +30,7 @@ namespace Fag_el_Gamous.Controllers
         {
             int pageSize = 10;
 
-            return View();
+            return View(_context.MainTbl.ToList());
         }
 
         /*public async Task<IActionResult> BurialRecords(string searchString)
