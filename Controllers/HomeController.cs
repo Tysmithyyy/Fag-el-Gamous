@@ -68,6 +68,13 @@ namespace Fag_el_Gamous.Controllers
         {
             if (ModelState.IsValid)
             {
+                //create the key here
+                string id = mainTbl.BurialLocationNs + " " + mainTbl.LowPairNs + "/" + mainTbl.HighPairNs
+                    + " " + mainTbl.BurialLocationEw + " " + mainTbl.LowPairEw + "/" + mainTbl.HighPairEw
+                    + " " + mainTbl.BurialSubplot + " #" + mainTbl.BurialNumber;
+
+                mainTbl.BurialId = id;
+
                 _context.MainTbl.Add(mainTbl);
                 _context.SaveChanges();
                 return RedirectToAction("BurialRecords");
