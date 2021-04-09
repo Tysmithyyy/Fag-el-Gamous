@@ -22,11 +22,6 @@ namespace Fag_el_Gamous.Controllers
 
         }
 
-        public IActionResult Add()
-        {
-            return View("Add_Edit");
-        }
-
         public IActionResult Index()
         {
             return View();
@@ -61,22 +56,15 @@ namespace Fag_el_Gamous.Controllers
             });
         }
 
-        /*public async Task<IActionResult> BurialRecords(string searchString)
+        [HttpGet]
+        public IActionResult Add()
         {
-             var records = from m in context
-              select m;
-
-             if (!String.IsNullOrEmpty(searchString))
-             {
-                 movies = movies.Where(s => s.Title.Contains(searchString));
-             }
-
             return View();
+        }
 
-            await movies.ToListAsync()
-        }*/
+        //add page functionality
         [HttpPost]
-        public IActionResult Add_Edit(MainTbl mainTbl)
+        public IActionResult Add(MainTbl mainTbl)
         {
             if (ModelState.IsValid)
             {
@@ -84,12 +72,6 @@ namespace Fag_el_Gamous.Controllers
                 _context.SaveChanges();
                 return RedirectToAction("BurialRecords");
             }
-            return View();
-        }
-
-        [HttpGet]
-        public IActionResult Add_Edit()
-        {
             return View();
         }
 
