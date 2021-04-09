@@ -27,6 +27,18 @@ namespace Fag_el_Gamous.Controllers
             return View();
         }
 
+        //Currently no functionality, maybe find information here?
+        public IActionResult AdminPage()
+        {
+            return View();
+        }
+
+        //add function to check if user is authenticated. Depending on the users permissions, edit, delete, and add buttons may be hidden.
+        public IActionResult Login()
+        {
+            return View();
+        }
+
         public IActionResult BurialRecords(string burialLocationNS, string burialLocationEW, string gender, string hairColor, int pageNum = 1)
         {
             int pageSize = 10;
@@ -56,13 +68,14 @@ namespace Fag_el_Gamous.Controllers
             });
         }
 
+        //add page, pulled up when add button is pressed
         [HttpGet]
         public IActionResult Add()
         {
             return View();
         }
 
-        //add page functionality
+        //add record, function is initiated when "Add Record" button is pressed on the Add.cshtml page
         [HttpPost]
         public IActionResult Add(MainTbl mainTbl)
         {
@@ -79,16 +92,6 @@ namespace Fag_el_Gamous.Controllers
                 _context.SaveChanges();
                 return RedirectToAction("BurialRecords");
             }
-            return View();
-        }
-
-        public IActionResult AdminPage()
-        {
-            return View();
-        }
-
-        public IActionResult Login()
-        {
             return View();
         }
 
