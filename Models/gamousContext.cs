@@ -81,9 +81,11 @@ namespace Fag_el_Gamous.Models
 
             modelBuilder.Entity<MainTbl>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => e.BurialId);
 
                 entity.ToTable("main_tbl");
+
+                entity.Property(e => e.BurialId).HasColumnName("Burial_ID");
 
                 entity.Property(e => e.ArtifactFound).HasColumnName("artifact_found");
 
@@ -102,8 +104,6 @@ namespace Fag_el_Gamous.Models
                 entity.Property(e => e.BoneTaken).HasColumnName("bone_taken");
 
                 entity.Property(e => e.BurialDepth).HasColumnName("burial_depth");
-
-                entity.Property(e => e.BurialId).HasColumnName("Burial_ID");
 
                 entity.Property(e => e.BurialLocationEw)
                     .IsRequired()
