@@ -105,7 +105,7 @@ namespace Fag_el_Gamous.Controllers
 
         //when delete button is pressed, the burial_id is passed into the function and it is removed from the maintbl
         [HttpPost]
-        public IActionResult Delete(int Burial_ID)
+        public IActionResult Delete(string Burial_ID)
         {
             _context.MainTbl.Remove(_context.MainTbl.Find(Burial_ID));
             _context.SaveChanges();
