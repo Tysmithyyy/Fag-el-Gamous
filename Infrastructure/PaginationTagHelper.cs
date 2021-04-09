@@ -40,7 +40,7 @@ namespace Fag_el_Gamous.Infrastructure
             TagBuilder previouslistTag = new TagBuilder("div");
             TagBuilder previousindividualTag = new TagBuilder("a");
 
-            if (PageInfo.CurrentPage == 0)
+            if (PageInfo.CurrentPage == 1)
             {
                 previouslistTag.Attributes["class"] = "page-item disabled";
             }
@@ -59,7 +59,7 @@ namespace Fag_el_Gamous.Infrastructure
 
             for (int i = PageInfo.CurrentPage - 2; i < PageInfo.CurrentPage + 3; i++)
             {
-                if (i >= 0 && i < (PageInfo.NumPages + 1))
+                if (i > 0 && i < (PageInfo.NumPages + 1))
                 {
                     TagBuilder listTag = new TagBuilder("div");
                     TagBuilder individualTag = new TagBuilder("a");
@@ -75,7 +75,7 @@ namespace Fag_el_Gamous.Infrastructure
                     };
                     KeyValuePairs["pageNum"] = i;
                     individualTag.Attributes["href"] = urlHelp.Action("BurialRecords", KeyValuePairs);
-                    individualTag.InnerHtml.Append((i + 1).ToString());
+                    individualTag.InnerHtml.Append(i.ToString());
 
                     listTag.InnerHtml.AppendHtml(individualTag);
                     finishedTag.InnerHtml.AppendHtml(listTag);

@@ -4,6 +4,7 @@
 
 <p>view all burial records and sort by different filters</p>
 
+
 <!--filters-->
 <div class="card">
     <div class="card-header">
@@ -113,43 +114,4 @@
             
     </tbody>
 </table>
-<div class="pagination" page-info="@Model.PageNumberingInfo"></div>
-
-    <div class="card">
-        <div class="card-header">
-            <ul class="nav nav-tabs card-header-tabs">
-                <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="#foo">General</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#bar">Bar</a>
-                </li>
-            </ul>
-        </div>
-        <div class="card-body">
-            <div class="tab-content">
-                <div class="tab-pane active" id="foo">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col">
-                                <h4>Filters:</h4>
-                                <button class="btn">Filter</button>
-                                <button class="btn">Clear Filters</button>
-                            </div>
-                            <div class="col">
-                                @using (Html.BeginForm())
-                                {
-                                    <text>Burial Location NS </text>@Html.DropDownList("burialLocationNS", new SelectList(ViewBag.BurialLocationNS))
-                                    <text>Burial Location EW </text>@Html.DropDownList("burialLocationEW", new SelectList(ViewBag.BurialLocationEW))
-                                    <text>Gender </text>@Html.DropDownList("gender", new SelectList(ViewBag.Gender))
-                                    <text>Hair Color </text>@Html.DropDownList("hairColor", new SelectList(ViewBag.HairColor))
-                                    <input class="btn btn-primary" type="submit" value="Search" />
-                                }
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane" id="bar">BAR</div>
-            </div>
-        </div>
-    </div>
+<div class="pagination" pcage-info="@Model.PageNumberingInfo"></div>

@@ -32,13 +32,13 @@ namespace Fag_el_Gamous.Controllers
             return View();
         }
 
-        public IActionResult BurialRecords(string burialLocationNS, string burialLocationEW, string gender, string hairColor, int pageNum = 0)
+        public IActionResult BurialRecords(string burialLocationNS, string burialLocationEW, string gender, string hairColor, int pageNum = 1)
         {
             int pageSize = 10;
-            ViewBag.BurialLocationNS = _context.MainTbl.Select(t => t.BurialLocationNs).Distinct();
-            ViewBag.BurialLocationEW = _context.MainTbl.Select(t => t.BurialLocationEw).Distinct();
-            ViewBag.Gender = _context.MainTbl.Select(t => t.GenderBodyCol).Distinct();
-            ViewBag.HairColor = _context.MainTbl.Select(t => t.HairColor).Distinct();
+            ViewBag.BurialLocationNS = _context.MainTbl.Select(t => t.BurialLocationNs).Distinct().OrderBy(x => x);
+            ViewBag.BurialLocationEW = _context.MainTbl.Select(t => t.BurialLocationEw).Distinct().OrderBy(x => x);
+            ViewBag.Gender = _context.MainTbl.Select(t => t.GenderBodyCol).Distinct().OrderBy(x => x);
+            ViewBag.HairColor = _context.MainTbl.Select(t => t.HairColor).Distinct().OrderBy(x => x);
 
             return View(new RecordsViewModel
             {

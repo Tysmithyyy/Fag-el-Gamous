@@ -13,6 +13,6 @@ namespace Fag_el_Gamous.Models.ViewModels
 
         public int TotalNumItems { get; set; }
 
-        public int NumPages => (int)(Math.Ceiling((decimal)TotalNumItems / NumItemsPerPage));
+        public int NumPages => (int)(Math.Ceiling((decimal)(TotalNumItems / NumItemsPerPage)));
     }
 }
