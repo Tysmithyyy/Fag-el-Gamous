@@ -107,8 +107,26 @@
             <td>@x.GenderBodyCol</td>
             <td>@x.EstimateAge</td>
             <td>@x.DayFound/@x.MonthFound/@x.YearFound</td>
-            <td><button class="btn btn-outline-success my-2 my-sm-0">@Html.ActionLink("Edit", "Home", new { id = x.BurialId })</button></td>
-            <td><button class="btn btn-outline-success my-2 my-sm-0">@Html.ActionLink("Delete", "Home", new { id = x.BurialId })</button></td>
+            <td>
+                <!--edit button-->
+                <form asp-action="Edit" method="get">
+                    <input type="hidden" name="BurialId"
+                           value="@x.BurialId" />
+                    <button type="submit" class="btn btn-sm btn-danger">
+                        Edit
+                    </button>
+                </form>
+            </td>
+            <td>
+                <!--delete button-->
+                <form asp-action="Delete" method="post">
+                    <input type="hidden" name="BurialId"
+                           value="@x.BurialId" />
+                    <button type="submit" class="btn btn-sm btn-danger">
+                        Delete
+                    </button>
+                </form>
+            </td>
         </tr>
         }
             
