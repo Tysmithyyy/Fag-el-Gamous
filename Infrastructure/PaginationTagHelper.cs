@@ -94,7 +94,7 @@ namespace Fag_el_Gamous.Infrastructure
             {
                 nextlistTag.Attributes["class"] = "page-item text-dark";
             };
-
+            
             KeyValuePairs["pageNum"] = PageInfo.CurrentPage + 1;
             nextindividualTag.Attributes["href"] = urlHelp.Action("BurialRecords", KeyValuePairs);
             nextindividualTag.Attributes["class"] = "page-link";

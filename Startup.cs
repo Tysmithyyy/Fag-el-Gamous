@@ -54,7 +54,7 @@ namespace Fag_el_Gamous
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute("pagenum",
-                    "/Page/{pagenum}/{id?}",
+                    "/Page/{pagenum}",
                     new { controller = "Home", action = "BurialRecords" });
 
                 endpoints.MapControllerRoute(

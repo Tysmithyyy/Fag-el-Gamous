@@ -63,7 +63,12 @@ namespace Fag_el_Gamous.Controllers
                     NumItemsPerPage = pageSize,
                     CurrentPage = pageNum,
                     //get the count of items and if there is a specified team get the count for that team.
-                    TotalNumItems = (_context.MainTbl.Count())
+                    TotalNumItems = (_context.MainTbl
+                .Where(t => t.BurialLocationNs == burialLocationNS || burialLocationNS == null)
+                .Where(t => t.BurialLocationEw == burialLocationEW || burialLocationEW == null)
+                .Where(t => t.GenderBodyCol == gender || gender == null)
+                .Where(t => t.HairColor == hairColor || hairColor == null)
+                .Count())
                 }
             });
         }
