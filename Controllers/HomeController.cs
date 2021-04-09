@@ -35,10 +35,10 @@ namespace Fag_el_Gamous.Controllers
         public IActionResult BurialRecords(string burialLocationNS, string burialLocationEW, string gender, string hairColor, int pageNum = 0)
         {
             int pageSize = 10;
-            ViewBag.BurialLocationNS = (_context.MainTbl.Select(t => t.BurialLocationNs).Distinct());
-            ViewBag.BurialLocationEW = (_context.MainTbl.Select(t => t.BurialLocationEw).Distinct());
-            ViewBag.Gender = (_context.MainTbl.Select(t => t.GenderBodyCol).Distinct());
-            ViewBag.HairColor = (_context.MainTbl.Select(t => t.HairColor).Distinct());
+            ViewBag.BurialLocationNS = _context.MainTbl.Select(t => t.BurialLocationNs).Distinct();
+            ViewBag.BurialLocationEW = _context.MainTbl.Select(t => t.BurialLocationEw).Distinct();
+            ViewBag.Gender = _context.MainTbl.Select(t => t.GenderBodyCol).Distinct();
+            ViewBag.HairColor = _context.MainTbl.Select(t => t.HairColor).Distinct();
 
             return View(new RecordsViewModel
             {
@@ -48,7 +48,6 @@ namespace Fag_el_Gamous.Controllers
                 .Where(t => t.BurialLocationEw == burialLocationEW || burialLocationEW == null)
                 .Where(t => t.GenderBodyCol == gender || gender == null)
                 .Where(t => t.HairColor == hairColor || hairColor == null)
-                .OrderBy(r => r.BurialId)
                 .Skip((pageNum - 1) * pageSize)
                 .Take(pageSize)
                 .ToList()),

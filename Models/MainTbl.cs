@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 // Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
 // If you have enabled NRTs for your project, then un-comment the following line:
@@ -9,7 +11,7 @@ namespace Fag_el_Gamous.Models
 {
     public partial class MainTbl
     {
-        public string BurialId { get; set; }
+        //public string BurialId { get; set; }
         public string BurialLocationNs { get; set; }
         public string BurialLocationEw { get; set; }
         public string LowPairNs { get; set; }
@@ -17,6 +19,7 @@ namespace Fag_el_Gamous.Models
         public string LowPairEw { get; set; }
         public string HighPairEw { get; set; }
         public string BurialSubplot { get; set; }
+        public string BurialNumber { get; set; }
         public string BurialDepth { get; set; }
         public string SouthToHead { get; set; }
         public string SouthToFeet { get; set; }
@@ -24,7 +27,6 @@ namespace Fag_el_Gamous.Models
         public string EastToFeet { get; set; }
         public string BurialSituation { get; set; }
         public string LengthOfRemains { get; set; }
-        public string BurialNumber { get; set; }
         public string SampleNumber { get; set; }
         public string GenderGe { get; set; }
         public string GeFunctionTotal { get; set; }

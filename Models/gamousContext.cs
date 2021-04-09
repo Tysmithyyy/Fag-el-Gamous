@@ -34,11 +34,11 @@ namespace Fag_el_Gamous.Models
         {
             modelBuilder.Entity<MainTbl>(entity =>
             {
-                entity.HasKey(e => e.BurialId);
+                entity.HasKey(e => new { e.BurialLocationNs, e.BurialLocationEw, e.LowPairNs, e.HighPairNs, e.LowPairEw, e.HighPairEw, e.BurialSubplot, e.BurialNumber });
 
                 entity.ToTable("main_tbl");
 
-                entity.Property(e => e.BurialId).HasColumnName("Burial_ID");
+                // entity.Property(e => e.BurialId).HasColumnName("Burial_ID");
 
                 entity.Property(e => e.ArtifactFound).HasColumnName("artifact_found");
 
