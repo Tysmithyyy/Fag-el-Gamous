@@ -121,6 +121,9 @@ namespace Fag_el_Gamous.Controllers
             return View(burial);
         }
 
+        //once save button is pressed on the edit page, function to update the context
+
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
