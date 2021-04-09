@@ -12,10 +12,10 @@ namespace Fag_el_Gamous.Models
         public string BurialId { get; set; }
         public string BurialLocationNs { get; set; }
         public string BurialLocationEw { get; set; }
-        public long LowPairNs { get; set; }
-        public long HighPairNs { get; set; }
-        public long LowPairEw { get; set; }
-        public long HighPairEw { get; set; }
+        public long? LowPairNs { get; set; }
+        public long? HighPairNs { get; set; }
+        public long? LowPairEw { get; set; }
+        public long? HighPairEw { get; set; }
         public string BurialSubplot { get; set; }
         public double? BurialDepth { get; set; }
         public long? SouthToHead { get; set; }
@@ -24,7 +24,7 @@ namespace Fag_el_Gamous.Models
         public long? EastToFeet { get; set; }
         public string BurialSituation { get; set; }
         public long? LengthOfRemains { get; set; }
-        public long BurialNumber { get; set; }
+        public long? BurialNumber { get; set; }
         public long? SampleNumber { get; set; }
         public string GenderGe { get; set; }
         public double? GeFunctionTotal { get; set; }

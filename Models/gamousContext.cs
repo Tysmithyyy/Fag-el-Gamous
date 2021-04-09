@@ -105,21 +105,15 @@ namespace Fag_el_Gamous.Models
 
                 entity.Property(e => e.BurialDepth).HasColumnName("burial_depth");
 
-                entity.Property(e => e.BurialLocationEw)
-                    .IsRequired()
-                    .HasColumnName("burial_location_EW");
+                entity.Property(e => e.BurialLocationEw).HasColumnName("burial_location_EW");
 
-                entity.Property(e => e.BurialLocationNs)
-                    .IsRequired()
-                    .HasColumnName("burial_location_NS");
+                entity.Property(e => e.BurialLocationNs).HasColumnName("burial_location_NS");
 
                 entity.Property(e => e.BurialNumber).HasColumnName("burial_number");
 
                 entity.Property(e => e.BurialSituation).HasColumnName("burial_situation");
 
-                entity.Property(e => e.BurialSubplot)
-                    .IsRequired()
-                    .HasColumnName("burial_subplot");
+                entity.Property(e => e.BurialSubplot).HasColumnName("burial_subplot");
 
                 entity.Property(e => e.CranialSuture).HasColumnName("cranial_suture");
 
