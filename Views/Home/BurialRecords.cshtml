@@ -5,6 +5,23 @@
 <p>view all burial records and sort by different filters</p>
 
 <!--filters-->
+<div class="card">
+    <div class="col">
+        <h4>Filters:</h4>
+        <button class="btn">Filter</button>
+        <button class="btn">Clear Filters</button>
+    </div>
+    <div class="col">
+        @using (Html.BeginForm())
+        {
+            <text>Burial Location NS </text>@Html.DropDownList("burialLocationNS", new SelectList(ViewBag.BurialLocationNS))
+            <text>Burial Location EW </text>@Html.DropDownList("burialLocationEW", new SelectList(ViewBag.BurialLocationEW))
+            <text>Gender </text>@Html.DropDownList("gender", new SelectList(ViewBag.Gender))
+            <text>Hair Color </text>@Html.DropDownList("hairColor", new SelectList(ViewBag.HairColor))
+            <input class="btn btn-primary" type="submit" value="Search" />
+        }
+    </div>
+</div>
 
 <nav class="navbar navbar-light bg-light">
     <form class="form-inline">
@@ -15,29 +32,91 @@
     </form>
 </nav>
 
-    <table class="table table-hover">
-        <thead class="thead-dark">
-            <tr>
-                <th>Burial ID</th>
-                <th>Burial Location (North/South)</th>
-                <th>Burial Location (East/West)</th>
-                <th>Length of Remains</th>
-                <th></th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var x in Model.Records) { 
-            <tr>
-                <td>@x.BurialId</td>
-                <td>@x.BurialLocationNs</td>
-                <td>@x.BurialLocationEw</td>
-                <td>@x.LengthOfRemains</td>
-                <td><button class="btn btn-outline-success my-2 my-sm-0">@Html.ActionLink("Edit", "Edit", "Home")</button></td>
-                <td><button class="btn btn-outline-success my-2 my-sm-0">@Html.ActionLink("Delete", "Delete", "Home")</button></td>
-            </tr>
-            }
+<table class="table table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th></th>
+            <th>Burial Location</th>
+            <th>Burial Number</th>
+            <th>Description</th>
+            <th>Length of Remains</th>
+            <th>Artifacts Description</th>
+            <th>Hair Color</th>
+            <th>Gender</th>
+            <th>Estimated Age</th>
+            <th>Date Found</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model.Records) { 
+        <tr>
+            <td>View Details</td>
+            <td>@x.BurialLocationNs @x.LowPairNs/@x.HighPairNs @x.BurialLocationEw @x.LowPairEw/@x.HighPairEw @x.BurialSubplot</td>
+            <td>@x.BurialNumber</td>
+            <td>
+                @if (x.BurialSituation != "")
+                {
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            View Description
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            @x.BurialSituation
+                        </div>
+                    </div>
+                }
+            </td>
+            <td>@x.LengthOfRemains</td>
+            <td>@x.ArtifactsDescription</td>
+            <td>@x.HairColor</td>
+            <td>@x.GenderBodyCol</td>
+            <td>@x.EstimateAge</td>
+            <td>@x.DayFound/@x.MonthFound/@x.YearFound</td>
+            <td><button class="btn btn-outline-success my-2 my-sm-0">@Html.ActionLink("Edit", "Edit", "Home")</button></td>
+            <td><button class="btn btn-outline-success my-2 my-sm-0">@Html.ActionLink("Delete", "Delete", "Home")</button></td>
+        </tr>
+        }
             
-        </tbody>
-    </table>
-    <div class="pagination" page-info="@Model.PageNumberingInfo"></div>
+    </tbody>
+</table>
+<div class="pagination" page-info="@Model.PageNumberingInfo"></div>
+
+    <div class="card">
+        <div class="card-header">
+            <ul class="nav nav-tabs card-header-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#foo">Foo</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#bar">Bar</a>
+                </li>
+            </ul>
+        </div>
+        <div class="card-body">
+            <div class="tab-content">
+                <div class="tab-pane" id="foo">FOO</div>
+                <div class="tab-pane" id="bar">BAR</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <ul class="nav nav-tabs card-header-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#foo">Foo</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#bar">Bar</a>
+                </li>
+            </ul>
+        </div>
+        <div class="card-body">
+            <div class="tab-content">
+                <div class="tab-pane" id="foo">FOO2</div>
+                <div class="tab-pane" id="bar">BAR2</div>
+            </div>
+        </div>
+    </div>
