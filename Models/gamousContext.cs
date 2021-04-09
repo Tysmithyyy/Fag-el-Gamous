@@ -19,7 +19,9 @@ namespace Fag_el_Gamous.Models
         {
         }
 
+        public virtual DbSet<CranialMain> CranialMain { get; set; }
         public virtual DbSet<MainTbl> MainTbl { get; set; }
+        public virtual DbSet<SourceInfo> SourceInfo { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -32,13 +34,56 @@ namespace Fag_el_Gamous.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<CranialMain>(entity =>
+            {
+                entity.HasKey(e => new { e.HighPairEw, e.LowPairEw, e.BurialPositioningNSDirection, e.BurialPositioningEWDirection, e.BurialNumber, e.BurialSubPlotDirection, e.HighPairNs, e.LowPairNs });
+
+                entity.Property(e => e.HighPairEw).HasColumnName("High Pair EW");
+
+                entity.Property(e => e.LowPairEw).HasColumnName("Low Pair EW");
+
+                entity.Property(e => e.BurialPositioningNSDirection).HasColumnName("Burial Positioning (N/S) Direction");
+
+                entity.Property(e => e.BurialPositioningEWDirection).HasColumnName("Burial Positioning (E/W) Direction");
+
+                entity.Property(e => e.BurialNumber).HasColumnName("Burial Number");
+
+                entity.Property(e => e.BurialSubPlotDirection).HasColumnName("Burial sub-plot direction");
+
+                entity.Property(e => e.HighPairNs).HasColumnName("High Pair NS");
+
+                entity.Property(e => e.LowPairNs).HasColumnName("Low Pair NS");
+
+                entity.Property(e => e.BasionBregmaHeight).HasColumnName("Basion-Bregma Height");
+
+                entity.Property(e => e.BasionNasion).HasColumnName("Basion-Nasion");
+
+                entity.Property(e => e.BasionProsthionLength).HasColumnName("Basion-Prosthion Length");
+
+                entity.Property(e => e.BizygomaticDiameter).HasColumnName("Bizygomatic Diameter");
+
+                entity.Property(e => e.BurialDepth).HasColumnName("Burial Depth");
+
+                entity.Property(e => e.BurialPositioningEastWestNumber).HasColumnName("Burial Positioning (East/West) Number");
+
+                entity.Property(e => e.BurialPositioningNorthSouthNumber).HasColumnName("Burial Positioning (North/South) Number");
+
+                entity.Property(e => e.InterorbitalBreadth).HasColumnName("Interorbital Breadth");
+
+                entity.Property(e => e.MaximumCranialBreadth).HasColumnName("Maximum Cranial Breadth");
+
+                entity.Property(e => e.MaximumCranialLength).HasColumnName("Maximum Cranial Length");
+
+                entity.Property(e => e.MaximumNasalBreadth).HasColumnName("Maximum Nasal Breadth");
+
+                entity.Property(e => e.NasionProsthion).HasColumnName("Nasion-Prosthion");
+            });
+
             modelBuilder.Entity<MainTbl>(entity =>
             {
-                entity.HasKey(e => new { e.BurialLocationNs, e.BurialLocationEw, e.LowPairNs, e.HighPairNs, e.LowPairEw, e.HighPairEw, e.BurialSubplot, e.BurialNumber });
+                entity.HasNoKey();
 
                 entity.ToTable("main_tbl");
-
-                // entity.Property(e => e.BurialId).HasColumnName("Burial_ID");
 
                 entity.Property(e => e.ArtifactFound).HasColumnName("artifact_found");
 
@@ -54,21 +99,27 @@ namespace Fag_el_Gamous.Models
 
                 entity.Property(e => e.BizygomaticDiameter).HasColumnName("bizygomatic_diameter");
 
-                entity.Property(e => e.BoneLength).HasColumnName("bone_length");
-
                 entity.Property(e => e.BoneTaken).HasColumnName("bone_taken");
 
                 entity.Property(e => e.BurialDepth).HasColumnName("burial_depth");
 
-                entity.Property(e => e.BurialLocationEw).HasColumnName("burial_location_EW");
+                entity.Property(e => e.BurialId).HasColumnName("Burial_ID");
 
-                entity.Property(e => e.BurialLocationNs).HasColumnName("burial_location_NS");
+                entity.Property(e => e.BurialLocationEw)
+                    .IsRequired()
+                    .HasColumnName("burial_location_EW");
+
+                entity.Property(e => e.BurialLocationNs)
+                    .IsRequired()
+                    .HasColumnName("burial_location_NS");
 
                 entity.Property(e => e.BurialNumber).HasColumnName("burial_number");
 
                 entity.Property(e => e.BurialSituation).HasColumnName("burial_situation");
 
-                entity.Property(e => e.BurialSubplot).HasColumnName("burial_subplot");
+                entity.Property(e => e.BurialSubplot)
+                    .IsRequired()
+                    .HasColumnName("burial_subplot");
 
                 entity.Property(e => e.CranialSuture).HasColumnName("cranial_suture");
 
@@ -87,8 +138,6 @@ namespace Fag_el_Gamous.Models
                 entity.Property(e => e.EstimateAge).HasColumnName("estimate_age");
 
                 entity.Property(e => e.EstimateLivingStature).HasColumnName("estimate_living_stature");
-
-                entity.Property(e => e.FemurDiameter).HasColumnName("femur_diameter");
 
                 entity.Property(e => e.FemurHead).HasColumnName("femur_head");
 
@@ -114,13 +163,9 @@ namespace Fag_el_Gamous.Models
 
                 entity.Property(e => e.HighPairNs).HasColumnName("high_pair_NS");
 
-                entity.Property(e => e.Humerus).HasColumnName("humerus");
-
                 entity.Property(e => e.HumerusHead).HasColumnName("humerus_head");
 
                 entity.Property(e => e.HumerusLength).HasColumnName("humerus_length");
-
-                entity.Property(e => e.IliacCrest).HasColumnName("iliac_crest");
 
                 entity.Property(e => e.InterorbitalBreadth).HasColumnName("interorbital_breadth");
 
@@ -135,8 +180,6 @@ namespace Fag_el_Gamous.Models
                 entity.Property(e => e.MaximumCranialLength).HasColumnName("maximum_cranial_length");
 
                 entity.Property(e => e.MaximumNasalBreadth).HasColumnName("maximum_nasal_breadth");
-
-                entity.Property(e => e.MedialClavicle).HasColumnName("medial_clavicle");
 
                 entity.Property(e => e.MedialIpRamus).HasColumnName("medial_IP_ramus");
 
@@ -193,6 +236,33 @@ namespace Fag_el_Gamous.Models
                 entity.Property(e => e.YearFound).HasColumnName("year_found");
 
                 entity.Property(e => e.ZygomaticCrest).HasColumnName("zygomatic_crest");
+            });
+
+            modelBuilder.Entity<SourceInfo>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToTable("_source_info_");
+
+                entity.Property(e => e.BaseName)
+                    .IsRequired()
+                    .HasColumnName("base_name");
+
+                entity.Property(e => e.DirName).HasColumnName("dir_name");
+
+                entity.Property(e => e.DstTable)
+                    .IsRequired()
+                    .HasColumnName("dst_table");
+
+                entity.Property(e => e.FormatName)
+                    .IsRequired()
+                    .HasColumnName("format_name");
+
+                entity.Property(e => e.Mtime).HasColumnName("mtime");
+
+                entity.Property(e => e.Size).HasColumnName("size");
+
+                entity.Property(e => e.SourceId).HasColumnName("source_id");
             });
 
             OnModelCreatingPartial(modelBuilder);

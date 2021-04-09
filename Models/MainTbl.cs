@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 // Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
 // If you have enabled NRTs for your project, then un-comment the following line:
@@ -11,83 +9,78 @@ namespace Fag_el_Gamous.Models
 {
     public partial class MainTbl
     {
-        //public string BurialId { get; set; }
+        public string BurialId { get; set; }
         public string BurialLocationNs { get; set; }
         public string BurialLocationEw { get; set; }
-        public string LowPairNs { get; set; }
-        public string HighPairNs { get; set; }
-        public string LowPairEw { get; set; }
-        public string HighPairEw { get; set; }
+        public long LowPairNs { get; set; }
+        public long HighPairNs { get; set; }
+        public long LowPairEw { get; set; }
+        public long HighPairEw { get; set; }
         public string BurialSubplot { get; set; }
-        public string BurialNumber { get; set; }
-        public string BurialDepth { get; set; }
-        public string SouthToHead { get; set; }
-        public string SouthToFeet { get; set; }
-        public string EastToHead { get; set; }
-        public string EastToFeet { get; set; }
+        public double? BurialDepth { get; set; }
+        public long? SouthToHead { get; set; }
+        public long? SouthToFeet { get; set; }
+        public long? EastToHead { get; set; }
+        public long? EastToFeet { get; set; }
         public string BurialSituation { get; set; }
-        public string LengthOfRemains { get; set; }
-        public string SampleNumber { get; set; }
+        public long? LengthOfRemains { get; set; }
+        public long BurialNumber { get; set; }
+        public long? SampleNumber { get; set; }
         public string GenderGe { get; set; }
-        public string GeFunctionTotal { get; set; }
+        public double? GeFunctionTotal { get; set; }
         public string GenderBodyCol { get; set; }
         public string BasilarSuture { get; set; }
-        public string VentralArc { get; set; }
-        public string SubpubicAngle { get; set; }
-        public string SciaticNotch { get; set; }
-        public string PubicBone { get; set; }
-        public string PreaurSulcus { get; set; }
-        public string MedialIpRamus { get; set; }
-        public string DorsalPitting { get; set; }
+        public long? VentralArc { get; set; }
+        public long? SubpubicAngle { get; set; }
+        public long? SciaticNotch { get; set; }
+        public long? PubicBone { get; set; }
+        public long? PreaurSulcus { get; set; }
+        public long? MedialIpRamus { get; set; }
+        public long? DorsalPitting { get; set; }
         public string ForemanMagnum { get; set; }
-        public string FemurHead { get; set; }
-        public string HumerusHead { get; set; }
+        public double? FemurHead { get; set; }
+        public double? HumerusHead { get; set; }
         public string Osteophytosis { get; set; }
         public string PubicSymphysis { get; set; }
-        public string BoneLength { get; set; }
-        public string MedialClavicle { get; set; }
-        public string IliacCrest { get; set; }
-        public string FemurDiameter { get; set; }
-        public string Humerus { get; set; }
-        public string FemurLength { get; set; }
-        public string HumerusLength { get; set; }
-        public string TibiaLength { get; set; }
-        public string Robust { get; set; }
-        public string SupraorbitalRidges { get; set; }
-        public string OrbitEdge { get; set; }
-        public string ParietalBossing { get; set; }
-        public string Gonian { get; set; }
-        public string NuchalCrest { get; set; }
-        public string ZygomaticCrest { get; set; }
+        public double? FemurLength { get; set; }
+        public double? HumerusLength { get; set; }
+        public double? TibiaLength { get; set; }
+        public long? Robust { get; set; }
+        public long? SupraorbitalRidges { get; set; }
+        public long? OrbitEdge { get; set; }
+        public long? ParietalBossing { get; set; }
+        public long? Gonian { get; set; }
+        public long? NuchalCrest { get; set; }
+        public long? ZygomaticCrest { get; set; }
         public string CranialSuture { get; set; }
-        public string MaximumCranialLength { get; set; }
-        public string MaximumCranialBreadth { get; set; }
-        public string BasionBregmaHeight { get; set; }
-        public string BasionNasion { get; set; }
-        public string BasionProsthionLength { get; set; }
-        public string BizygomaticDiameter { get; set; }
-        public string NasionProsthion { get; set; }
-        public string MaximumNasalBreadth { get; set; }
-        public string InterorbitalBreadth { get; set; }
+        public double? MaximumCranialLength { get; set; }
+        public double? MaximumCranialBreadth { get; set; }
+        public double? BasionBregmaHeight { get; set; }
+        public double? BasionNasion { get; set; }
+        public double? BasionProsthionLength { get; set; }
+        public double? BizygomaticDiameter { get; set; }
+        public double? NasionProsthion { get; set; }
+        public double? MaximumNasalBreadth { get; set; }
+        public double? InterorbitalBreadth { get; set; }
         public string ArtifactsDescription { get; set; }
         public string HairColor { get; set; }
         public string PreservationIndex { get; set; }
-        public string HairTaken { get; set; }
-        public string SoftTissueTaken { get; set; }
-        public string BoneTaken { get; set; }
-        public string ToothTaken { get; set; }
-        public string TextileTaken { get; set; }
+        public long? HairTaken { get; set; }
+        public long? SoftTissueTaken { get; set; }
+        public long? BoneTaken { get; set; }
+        public long? ToothTaken { get; set; }
+        public long? TextileTaken { get; set; }
         public string DescriptionOfTaken { get; set; }
-        public string ArtifactFound { get; set; }
-        public string EstimateAge { get; set; }
-        public string EstimateLivingStature { get; set; }
+        public long? ArtifactFound { get; set; }
+        public double? EstimateAge { get; set; }
+        public double? EstimateLivingStature { get; set; }
         public string ToothAttrition { get; set; }
         public string ToothEruption { get; set; }
         public string PathologyAnomalies { get; set; }
         public string EpiphysealUnion { get; set; }
-        public string YearFound { get; set; }
+        public long? YearFound { get; set; }
         public string MonthFound { get; set; }
-        public string DayFound { get; set; }
+        public long? DayFound { get; set; }
         public string HeadDirection { get; set; }
     }
 }
