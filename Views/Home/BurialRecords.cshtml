@@ -6,20 +6,52 @@
 
 <!--filters-->
 <div class="card">
-    <div class="col">
-        <h4>Filters:</h4>
-        <button class="btn">Filter</button>
-        <button class="btn">Clear Filters</button>
+    <div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#foo">General</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#bar">Bar</a>
+            </li>
+        </ul>
     </div>
-    <div class="col">
-        @using (Html.BeginForm())
-        {
-            <text>Burial Location NS </text>@Html.DropDownList("burialLocationNS", new SelectList(ViewBag.BurialLocationNS))
-            <text>Burial Location EW </text>@Html.DropDownList("burialLocationEW", new SelectList(ViewBag.BurialLocationEW))
-            <text>Gender </text>@Html.DropDownList("gender", new SelectList(ViewBag.Gender))
-            <text>Hair Color </text>@Html.DropDownList("hairColor", new SelectList(ViewBag.HairColor))
-            <input class="btn btn-primary" type="submit" value="Search" />
-        }
+    <div class="card-body">
+        <div class="tab-content">
+            <div class="tab-pane active" id="foo">
+                <div class="container">
+                    @using (Html.BeginForm("BurialRecords", "Home", FormMethod.Get))
+                    {
+                        <div class="row">
+                            <div class="col-3">
+                                <h4>Filters:</h4>
+                                <input class="btn btn-primary" type="submit" value="Filter" />
+                                <button class="btn">Clear Filters</button>
+                            </div>
+                            <div class="col-9">
+                                <div class="form-row">
+                                    <div class="form-group col-4">
+                                        <text>Burial Location NS </text>@Html.DropDownList("burialLocationNS", new SelectList(ViewBag.BurialLocationNS), new { @class = "form-control" })
+                                    </div>
+                                    <div class="form-group col-4">
+                                        <text>Burial Location EW </text>@Html.DropDownList("burialLocationEW", new SelectList(ViewBag.BurialLocationEW), new { @class = "form-control" })
+                                    </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-4">
+                                            <text>Gender </text>@Html.DropDownList("gender", new SelectList(ViewBag.Gender), new { @class = "form-control" })
+                                        </div>
+                                        <div class="form-group col-4">
+                                            <text>Hair Color </text>@Html.DropDownList("hairColor", new SelectList(ViewBag.HairColor), new { @class = "form-control" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                     }
+                </div>
+            </div>
+            <div class="tab-pane" id="bar">BAR</div>
+        </div>
     </div>
 </div>
 
@@ -87,7 +119,7 @@
         <div class="card-header">
             <ul class="nav nav-tabs card-header-tabs">
                 <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="#foo">Foo</a>
+                    <a class="nav-link active" data-toggle="tab" href="#foo">General</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="tab" href="#bar">Bar</a>
@@ -96,27 +128,28 @@
         </div>
         <div class="card-body">
             <div class="tab-content">
-                <div class="tab-pane" id="foo">FOO</div>
+                <div class="tab-pane active" id="foo">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <h4>Filters:</h4>
+                                <button class="btn">Filter</button>
+                                <button class="btn">Clear Filters</button>
+                            </div>
+                            <div class="col">
+                                @using (Html.BeginForm())
+                                {
+                                    <text>Burial Location NS </text>@Html.DropDownList("burialLocationNS", new SelectList(ViewBag.BurialLocationNS))
+                                    <text>Burial Location EW </text>@Html.DropDownList("burialLocationEW", new SelectList(ViewBag.BurialLocationEW))
+                                    <text>Gender </text>@Html.DropDownList("gender", new SelectList(ViewBag.Gender))
+                                    <text>Hair Color </text>@Html.DropDownList("hairColor", new SelectList(ViewBag.HairColor))
+                                    <input class="btn btn-primary" type="submit" value="Search" />
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="tab-pane" id="bar">BAR</div>
-            </div>
-        </div>
-    </div>
-
-    <div class="card">
-        <div class="card-header">
-            <ul class="nav nav-tabs card-header-tabs">
-                <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="#foo">Foo</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#bar">Bar</a>
-                </li>
-            </ul>
-        </div>
-        <div class="card-body">
-            <div class="tab-content">
-                <div class="tab-pane" id="foo">FOO2</div>
-                <div class="tab-pane" id="bar">BAR2</div>
             </div>
         </div>
     </div>
