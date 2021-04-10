@@ -52,10 +52,7 @@ namespace Fag_el_Gamous
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllerRoute("haircolor",
-                    "/{pagenum}/{hairColor}",
-                    new { controller = "Home", action = "BurialRecords" });
+            { 
 
                 endpoints.MapControllerRoute("pagenum",
                     "PageNum/{pagenum}",

@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Fag_el_Gamous.Infrastructure
 {
-    [HtmlTargetElement("div", Attributes = "page-info")]
+    [HtmlTargetElement("div", Attributes = "page-info, filters")]
     public class PaginationTagHelper : TagHelper
     {
         private IUrlHelperFactory urlInfo;

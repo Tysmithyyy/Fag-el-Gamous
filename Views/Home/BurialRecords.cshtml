@@ -20,7 +20,7 @@
         <div class="tab-content">
             <div class="tab-pane active" id="foo">
                 <div class="container">
-                    @using (Html.BeginForm("BurialRecords", "Home", FormMethod.Get))
+                    @using (Html.BeginForm("BurialRecords", "Home", new { pageNum = 1 }, FormMethod.Get))
                     {
                         <div class="row">
                             <div class="col-3">
@@ -140,4 +140,4 @@
 
     </tbody>
 </table>
-<div class="pagination" page-info="@Model.PageNumberingInfo"></div>
+<div class="pagination" page-info="@Model.PageNumberingInfo" filters="@Model.Filters"></div>
