@@ -1,5 +1,6 @@
 ﻿using Fag_el_Gamous.Models;
 using Fag_el_Gamous.Models.ViewModels;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -27,17 +28,6 @@ namespace Fag_el_Gamous.Controllers
             return View();
         }
 
-        //Currently no functionality, maybe find information here?
-        public IActionResult AdminPage()
-        {
-            return View();
-        }
-
-        //add function to check if user is authenticated. Depending on the users permissions, edit, delete, and add buttons may be hidden.
-        public IActionResult Login()
-        {
-            return View();
-        }
 
         [HttpGet]
         public IActionResult BurialRecords(string burialLocationNS, string burialLocationEW, int lengthLow, int lengthHigh, string gender, string hairColor, int pageNum = 1)
@@ -89,7 +79,8 @@ namespace Fag_el_Gamous.Controllers
         }
 
 
-
+        //the burialrecords for Admins has a edit and delete button shown on the page. This page will be shown when the user is loggedin
+        //identical copy of the BurialRecordsPage
         [HttpGet]
         public IActionResult BurialRecordsAdmin(string burialLocationNS, string burialLocationEW, int lengthLow, int lengthHigh, string gender, string hairColor, int pageNum = 1)
         {
@@ -160,9 +151,18 @@ namespace Fag_el_Gamous.Controllers
 
                 _context.MainTbl.Add(mainTbl);
                 _context.SaveChanges();
-                return RedirectToAction("BurialRecords");
+
+                //if user is logged in, return the admin burial view, if they are not logged in, return regular view
+                if (User.Identity.IsAuthenticated)
+                {
+                    return RedirectToAction("BurialRecordsAdmin");
+                }
+
+                else { return RedirectToAction("BurialRecords"); }
             }
+
             return View();
+            
         }
 
         //when delete button is pressed, the burial_id is passed into the function and it is removed from the maintbl
@@ -171,7 +171,14 @@ namespace Fag_el_Gamous.Controllers
         {
             _context.MainTbl.Remove(_context.MainTbl.Find(BurialId));
             _context.SaveChanges();
-            return RedirectToAction("BurialRecords");
+
+            //if user is logged in, return the admin burial view, if they are not logged in, return regular view
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("BurialRecordsAdmin");
+            }
+
+            else { return RedirectToAction("BurialRecords"); }
         }
 
         //when edit button is pressed, bring in the burial ID and fill into page
@@ -192,7 +199,14 @@ namespace Fag_el_Gamous.Controllers
             burial.BurialId = id;
             _context.MainTbl.Add(burial);
             _context.SaveChanges();
-            return RedirectToAction("BurialRecords");
+
+            //if user is logged in, return the admin burial view, if they are not logged in, return regular view
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("BurialRecordsAdmin");
+            }
+
+            else { return RedirectToAction("BurialRecords"); }
         }
 
         //once save button is pressed on the edit page, function to update the context

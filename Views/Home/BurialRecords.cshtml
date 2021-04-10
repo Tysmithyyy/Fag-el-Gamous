@@ -103,43 +103,68 @@
     <tbody>
         @foreach (var x in Model.Records)
         {
-            <tr>
-                <td>
-                    <form asp-action="SingleRecord" method="get">
-                        <input type="hidden" name="BurialId"
-                               value="@x.BurialId" />
-                        <button type="submit" class="btn btn-sm btn-primary">
-                            View Details
+        <tr>
+            <td>
+                <form asp-action="SingleRecord" method="get">
+                    <input type="hidden" name="BurialId"
+                           value="@x.BurialId" />
+                    <button type="submit" class="btn btn-sm btn-primary">
+                        View Details
+                    </button>
+                </form>
+            </td>
+            <td>@x.BurialLocationNs @x.LowPairNs/@x.HighPairNs @x.BurialLocationEw @x.LowPairEw/@x.HighPairEw @x.BurialSubplot</td>
+            <td>@x.BurialNumber</td>
+            <td>
+                @if (x.BurialSituation != "")
+                {
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            View Description
                         </button>
-                    </form>
-                </td>
-                <td>@x.BurialLocationNs @x.LowPairNs/@x.HighPairNs @x.BurialLocationEw @x.LowPairEw/@x.HighPairEw @x.BurialSubplot</td>
-                <td>@x.BurialNumber</td>
-                <td>
-                    @if (x.BurialSituation != "")
-                    {
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                View Description
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                @x.BurialSituation
-                            </div>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            @x.BurialSituation
                         </div>
-                    }
-                </td>
-                <td>@x.LengthOfRemains</td>
-                <td>@x.ArtifactsDescription</td>
-                <td>@x.HairColor</td>
-                <td>@x.GenderBodyCol</td>
-                <td>@x.EstimateAge</td>
-                <td>@x.MonthFound @x.DayFound, @x.YearFound</td>
-                <td>
+                    </div>
+                }
+            </td>
+            <td>@x.LengthOfRemains</td>
+            <td>@x.ArtifactsDescription</td>
+            <td>@x.HairColor</td>
+            <td>@x.GenderBodyCol</td>
+            <td>@x.EstimateAge</td>
+            <td>@x.MonthFound @x.DayFound, @x.YearFound</td>
+            <td>
 
-                    <!--edit and delete buttons removed on this page which shows if a user is not logged in-->
-                   
-                    
-            </tr>
+            <!--is the user is authenticated, the button will show, if the user is not authenticated, then the button will be hidden-->
+
+            <td @if (User.Identity.IsAuthenticated) { } : hidden >
+
+                <!--edit button-->
+
+                <form asp-action="Edit" method="get">
+
+                    <input type="hidden" name="BurialId"
+                           value="@x.BurialId" />
+                    <button type="submit" class="btn btn-sm btn-primary">
+                        Edit
+                    </button>
+                </form>
+            </td>
+
+            <td @if (User.Identity.IsAuthenticated) { } : hidden>
+
+                <!--delete button-->
+                <form asp-action="Delete" method="post">
+                    <input type="hidden" name="BurialId"
+                           value="@x.BurialId" />
+                    <button type="submit" class="btn btn-sm btn-danger">
+                        Delete
+                    </button>
+                </form>
+            </td>
+
+        </tr>
         }
 
     </tbody>
