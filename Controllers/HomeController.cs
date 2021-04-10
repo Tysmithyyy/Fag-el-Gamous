@@ -72,7 +72,7 @@ namespace Fag_el_Gamous.Controllers
                 .Where(t => t.HairColor == hairColor || hairColor == null)
                 .Count())
                 },
-                path_and_query = HttpContext.Current.Request.Url.PathAndQuery
+                //path_and_query = HttpContext.Current.Request.Url.PathAndQuery
             });
         }
 
@@ -123,12 +123,14 @@ namespace Fag_el_Gamous.Controllers
         [HttpPost]
         public IActionResult Edit(MainTbl burial)
         {
+            _context.MainTbl.Remove(_context.MainTbl.Find(burial.BurialId));
             string id = burial.BurialLocationNs + " " + burial.LowPairNs + "/" + burial.HighPairNs
                     + " " + burial.BurialLocationEw + " " + burial.LowPairEw + "/" + burial.HighPairEw
                     + " " + burial.BurialSubplot + " #" + burial.BurialNumber;
             burial.BurialId = id;
-            _context.MainTbl.Update(burial);
-            return View("BurialRecords");
+            _context.MainTbl.Add(burial);
+            _context.SaveChanges();
+            return RedirectToAction("BurialRecords");
         }
 
         //once save button is pressed on the edit page, function to update the context
