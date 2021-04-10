@@ -18,10 +18,10 @@ namespace Fag_el_Gamous.Models
         public long? HighPairEw { get; set; }
         public string BurialSubplot { get; set; }
         public double? BurialDepth { get; set; }
-        public long? SouthToHead { get; set; }
-        public long? SouthToFeet { get; set; }
-        public long? EastToHead { get; set; }
-        public long? EastToFeet { get; set; }
+        public double? SouthToHead { get; set; }
+        public double? SouthToFeet { get; set; }
+        public double? WestToHead { get; set; }
+        public double? WestToFeet { get; set; }
         public string BurialSituation { get; set; }
         public long? LengthOfRemains { get; set; }
         public long? BurialNumber { get; set; }
