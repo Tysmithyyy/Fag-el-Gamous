@@ -1,16 +1,17 @@
 ﻿@model MainTbl
 
-<h1>Add New Burial Record</h1>
+<h1 class="text-center">Add New Burial Record</h1>
 
 
 <form asp-action="Add" method="post">
-
-    <h3>Location of Burial</h3>
-    <div class="border">
+<div class="row">
+    <div class="border col-4">
+        <br />
+        <h4>Location of Burial</h4>
         <!--burial location NS-->
         <div class="form-group">
             <label asp-for="BurialLocationNs">Burial Location (North/South)</label>
-            <select class="form-control col-3" asp-for="BurialLocationNs">
+            <select class="form-control" asp-for="BurialLocationNs">
                 <option value="">Select One</option>
                 <option value="N">North</option>
                 <option value="S">South</option>
@@ -20,7 +21,7 @@
         <!--burial location EW-->
         <div class="form-group">
             <label asp-for="BurialLocationEw">Burial Location (East/West)</label>
-            <select class="form-control col-3" asp-for="BurialLocationEw">
+            <select class="form-control" asp-for="BurialLocationEw">
                 <option value="">Select One</option>
                 <option value="E">East</option>
                 <option value="W">West</option>
@@ -30,31 +31,31 @@
         <!--low pair NS-->
         <div class="form-group">
             <label asp-for="LowPairNs">Low pair (North/South)</label>
-            <input class="form-control col-3" asp-for="LowPairNs" />
+            <input class="form-control" asp-for="LowPairNs" />
         </div>
 
         <!--high pair NS-->
         <div class="form-group">
             <label asp-for="HighPairNs">High pair (North/South)</label>
-            <input class="form-control col-3" asp-for="HighPairNs" />
+            <input class="form-control" asp-for="HighPairNs" />
         </div>
 
         <!--low pair EW-->
         <div class="form-group">
             <label asp-for="LowPairEw">Low pair (East/West)</label>
-            <input class="form-control col-3" asp-for="LowPairEw" />
+            <input class="form-control" asp-for="LowPairEw" />
         </div>
 
         <!--high pair EW-->
         <div class="form-group">
             <label asp-for="HighPairEw">High pair (East/West)</label>
-            <input class="form-control col-3" asp-for="HighPairEw" />
+            <input class="form-control" asp-for="HighPairEw" />
         </div>
 
         <!--burial subplot-->
         <div class="form-group">
             <label asp-for="BurialSubplot">Burial Subplot</label>
-            <select class="form-control col-3" asp-for="BurialSubplot">
+            <select class="form-control" asp-for="BurialSubplot">
                 <option value="">Select One</option>
                 <option value="NE">Northeast</option>
                 <option value="NW">Northwest</option>
@@ -66,58 +67,59 @@
         <!--burial number-->
         <div class="form-group">
             <label asp-for="BurialNumber">Burial Number</label>
-            <input class="form-control col-3" asp-for="BurialNumber" />
+            <input class="form-control" asp-for="BurialNumber" />
         </div>
 
     </div>
 
-
-    <h3>Orientation of Burial</h3>
-    <div class="border">
-    <!--south to head-->
+    <div class="border col-4">
+        <br />
+        <h4>Orientation of Burial</h4>
+        <!--south to head-->
         <div class="form-group">
             <label asp-for="SouthToHead">South to Head </label>
-            <input class="form-control col-3" asp-for="SouthToHead" />
+            <input class="form-control" asp-for="SouthToHead" />
         </div>
 
         <!--south to feet-->
         <div class="form-group">
             <label asp-for="SouthToFeet">South to Feet </label>
-            <input class="form-control col-3" asp-for="SouthToFeet" />
+            <input class="form-control" asp-for="SouthToFeet" />
         </div>
 
         <!--east to head-->
         <div class="form-group">
             <label asp-for="WestToHead">East to Head </label>
-            <input class="form-control col-3" asp-for="WestToHead" />
+            <input class="form-control" asp-for="WestToHead" />
         </div>
 
         <!--east to feet-->
         <div class="form-group">
             <label asp-for="WestToFeet">East to Feet </label>
-            <input class="form-control col-3" asp-for="WestToFeet" />
+            <input class="form-control" asp-for="WestToFeet" />
         </div>
 
         <!--legnth-->
         <div class="form-group">
             <label asp-for="LengthOfRemains">Length of Remains</label>
-            <input class="form-control col-3" asp-for="LengthOfRemains" />
+            <input class="form-control" asp-for="LengthOfRemains" />
         </div>
         <!--depth-->
         <div class="form-group">
             <label asp-for="BurialDepth">Burial Depth </label>
-            <input class="form-control col-3" asp-for="BurialDepth" />
+            <input class="form-control" asp-for="BurialDepth" />
+        </div>
+
     </div>
 
-     </div>
-
-    <h3>Miscellaneous Information </h3>
-    <div class="border">
+    <div class="border col-4">
+        <br />
+        <h4>Miscellaneous Information </h4>
         <!--photo yes no-->
         <!--burial goods yes no (references artifact found)-->
         <div class="form-group">
             <label asp-for="ArtifactFound">Artifact Found? </label>
-            <select class="form-control col-3" asp-for="ArtifactFound">
+            <select class="form-control" asp-for="ArtifactFound">
                 <option value="">Select One</option>
                 <option value="1">Yes</option>
                 <option value="0">No</option>
@@ -127,7 +129,7 @@
         <!--Hair color-->
         <div class="form-group">
             <label asp-for="HairColor">Hair color or specimen </label>
-            <select class="form-control col-3" asp-for="HairColor">
+            <select class="form-control" asp-for="HairColor">
                 <option value="">Select One</option>
                 <option value="Brown">Brown</option>
                 <option value="Red">Red</option>
@@ -138,31 +140,31 @@
 
         <!--AGE-->
         <!--<div class="form-group">
-        <label asp-for="AGE">Estimated Age (at time of death) </label>
-        <select class="form-control col-3" asp-for="EstimateAge">
-            <option value="">Select One</option>
-            <option value="Adult">Adult</option>
-            <option value="Child">Child</option>
-            <option value="Neonate/Infant">Infant</option>
-        </select>
-    </div>
-        -->
+            <label asp-for="AGE">Estimated Age (at time of death) </label>
+            <select class="form-control col-3" asp-for="EstimateAge">
+                <option value="">Select One</option>
+                <option value="Adult">Adult</option>
+                <option value="Child">Child</option>
+                <option value="Neonate/Infant">Infant</option>
+            </select>
+        </div>
+            -->
         <!--excavation recorder-->
         <!--<div class="form-group">
-        <label asp-for="RecorderName">Researcher </label>
-            <input class="form-control col-3" asp-for="RecorderName" />
+            <label asp-for="RecorderName">Researcher </label>
+                <input class="form-control col-3" asp-for="RecorderName" />
 
-    </div>
-        -->
+        </div>
+            -->
         <!--Date-->
         <div class="form-group">
             <label asp-for="YearFound">Year Exhumed </label>
-            <input class="form-control col-3" asp-for="YearFound" />
+            <input class="form-control" asp-for="YearFound" />
         </div>
 
         <div class="form-group">
             <label asp-for="MonthFound">Month Exhumed </label>
-            <select class="form-control col-3" asp-for="MonthFound">
+            <select class="form-control" asp-for="MonthFound">
                 <option value="0">Select One</option>
                 <option value="Jan">January</option>
                 <option value="Feb">February</option>
@@ -181,14 +183,19 @@
 
         <div class="form-group">
             <label asp-for="DayFound">Day Exhumed </label>
-            <input class="form-control col-3" asp-for="DayFound" />
+            <input class="form-control" asp-for="DayFound" />
         </div>
 
 
     </div>
 
+</div>
+    <br />
 
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Add Record</button>
+    <div class="text-center">
+
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Add Record</button>
+    </div>
 
     <div asp-validation-summary="All"></div>
 
