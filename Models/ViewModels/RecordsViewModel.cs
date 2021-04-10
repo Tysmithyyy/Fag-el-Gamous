@@ -10,5 +10,7 @@ namespace Fag_el_Gamous.Models.ViewModels
         public List<MainTbl> Records { get; set; }
         public PageNumberingInfo PageNumberingInfo { get; set; }
 
+        public string path_and_query { get; set; }
+
     }
 }

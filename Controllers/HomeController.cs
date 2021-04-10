@@ -39,7 +39,7 @@ namespace Fag_el_Gamous.Controllers
             return View();
         }
 
-        public IActionResult BurialRecords(string burialLocationNS, string burialLocationEW, string gender, string hairColor, int pageNum = 1)
+        public IActionResult BurialRecords(string burialLocationNS, string burialLocationEW, string gender, string hairColor, string path_and_query, int pageNum = 1)
         {
             int pageSize = 10;
             ViewBag.BurialLocationNS = _context.MainTbl.Select(t => t.BurialLocationNs).Distinct().OrderBy(x => x);
@@ -69,7 +69,8 @@ namespace Fag_el_Gamous.Controllers
                 .Where(t => t.GenderBodyCol == gender || gender == null)
                 .Where(t => t.HairColor == hairColor || hairColor == null)
                 .Count())
-                }
+                },
+                path_and_query = HttpContext.Current.Request.Url.PathAndQuery
             });
         }
 
