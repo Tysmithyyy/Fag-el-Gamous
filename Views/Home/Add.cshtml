@@ -6,9 +6,9 @@
 <form asp-action="Add" method="post">
 
     <h3>Location of Burial</h3>
-    <div class="border form-group">
+    <div class="border">
         <!--burial location NS-->
-        <div>
+        <div class="form-group">
             <label asp-for="BurialLocationNs">Burial Location (North/South)</label>
             <select class="form-control col-3" asp-for="BurialLocationNs">
                 <option value="">Select One</option>
@@ -18,7 +18,7 @@
         </div>
 
         <!--burial location EW-->
-        <div>
+        <div class="form-group">
             <label asp-for="BurialLocationEw">Burial Location (East/West)</label>
             <select class="form-control col-3" asp-for="BurialLocationEw">
                 <option value="">Select One</option>
@@ -28,31 +28,31 @@
         </div>
 
         <!--low pair NS-->
-        <div>
+        <div class="form-group">
             <label asp-for="LowPairNs">Low pair (North/South)</label>
             <input class="form-control col-3" asp-for="LowPairNs" />
         </div>
 
         <!--high pair NS-->
-        <div>
+        <div class="form-group">
             <label asp-for="HighPairNs">High pair (North/South)</label>
             <input class="form-control col-3" asp-for="HighPairNs" />
         </div>
 
         <!--low pair EW-->
-        <div>
+        <div class="form-group">
             <label asp-for="LowPairEw">Low pair (East/West)</label>
             <input class="form-control col-3" asp-for="LowPairEw" />
         </div>
 
         <!--high pair EW-->
-        <div>
+        <div class="form-group">
             <label asp-for="HighPairEw">High pair (East/West)</label>
             <input class="form-control col-3" asp-for="HighPairEw" />
         </div>
 
         <!--burial subplot-->
-        <div>
+        <div class="form-group">
             <label asp-for="BurialSubplot">Burial Subplot</label>
             <select class="form-control col-3" asp-for="BurialSubplot">
                 <option value="">Select One</option>
@@ -64,7 +64,7 @@
         </div>
 
         <!--burial number-->
-        <div>
+        <div class="form-group">
             <label asp-for="BurialNumber">Burial Number</label>
             <input class="form-control col-3" asp-for="BurialNumber" />
         </div>
