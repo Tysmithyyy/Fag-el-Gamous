@@ -54,10 +54,14 @@ namespace Fag_el_Gamous.Infrastructure
             KeyValuePairs["pageNum"] = PageInfo.CurrentPage - 1;
             KeyValuePairs["hairColor"] = Filters.hairColor;
             KeyValuePairs["gender"] = Filters.gender;
+            KeyValuePairs["yearFound"] = Filters.yearFound;
             KeyValuePairs["burialLocationEW"] = Filters.burialLocationEW;
             KeyValuePairs["burialLocationNS"] = Filters.burialLocationNS;
             KeyValuePairs["lengthHigh"] = Filters.lengthHigh;
             KeyValuePairs["lengthLow"] = Filters.lengthLow;
+            KeyValuePairs["ageHigh"] = Filters.ageHigh;
+            KeyValuePairs["ageLow"] = Filters.ageLow;
+            KeyValuePairs["searchString"] = Filters.searchString;
             previousindividualTag.Attributes["href"] = urlHelp.Action("BurialRecords", KeyValuePairs);
             previousindividualTag.Attributes["class"] = "page-link";
             previousindividualTag.InnerHtml.Append("Previous");
