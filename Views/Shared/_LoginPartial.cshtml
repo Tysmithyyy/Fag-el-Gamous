@@ -16,12 +16,21 @@
             </form>
         </li>
 
+        //If logged in, link to add record buttons and link to the All Burial Records Pages with add and delete buttons
         <li class="nav-item">
             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Add"> Add Burial Records</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="BurialRecordsAdmin"> All Burial Records</a>
         </li>
     }
     else
     {
+        //if not logged in, leads to burial records page with no edit and delete buttons
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="BurialRecords"> All Burial Records</a>
+        </li>
         <li class="nav-item">
             <a class="nav-link text-dark" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
         </li>

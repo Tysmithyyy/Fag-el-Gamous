@@ -23,8 +23,8 @@ namespace Fag_el_Gamous.Areas.Identity
                 services.AddDefaultIdentity<Researcher>(options => options.SignIn.RequireConfirmedAccount = true)
                     .AddEntityFrameworkStores<AuthContext>();
 
-                services.AddDefaultIdentity<Administrator>(options => options.SignIn.RequireConfirmedAccount = true)
-                    .AddEntityFrameworkStores<AuthContext>();
+                //services.AddDefaultIdentity<Administrator>(options => options.SignIn.RequireConfirmedAccount = true)
+                    //.AddEntityFrameworkStores<AuthContext>();
             });
         }
     }

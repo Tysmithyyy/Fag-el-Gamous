@@ -88,6 +88,56 @@ namespace Fag_el_Gamous.Controllers
             });
         }
 
+
+
+        [HttpGet]
+        public IActionResult BurialRecordsAdmin(string burialLocationNS, string burialLocationEW, int lengthLow, int lengthHigh, string gender, string hairColor, int pageNum = 1)
+        {
+            int pageSize = 10;
+            ViewBag.BurialLocationNS = _context.MainTbl.Where(t => t.BurialLocationNs != null).Select(t => t.BurialLocationNs).Distinct().OrderBy(x => x);
+            ViewBag.BurialLocationEW = _context.MainTbl.Where(t => t.BurialLocationEw != null).Select(t => t.BurialLocationEw).Distinct().OrderBy(x => x);
+            ViewBag.Gender = _context.MainTbl.Where(t => t.GenderBodyCol != null).Select(t => t.GenderBodyCol).Distinct().OrderBy(x => x);
+            ViewBag.HairColor = _context.MainTbl.Where(t => t.HairColor != null).Select(t => t.HairColor).Distinct().OrderBy(x => x);
+
+
+            return View(new RecordsViewModel
+            {
+                Records =
+                (_context.MainTbl
+                .Where(t => t.BurialLocationNs == burialLocationNS || burialLocationNS == null)
+                .Where(t => t.BurialLocationEw == burialLocationEW || burialLocationEW == null)
+                .Where(t => t.GenderBodyCol == gender || gender == null)
+                .Where(t => t.HairColor == hairColor || hairColor == null)
+                .Where(t => t.LengthOfRemains < lengthHigh || lengthHigh == 0)
+                .Where(t => t.LengthOfRemains > lengthLow || lengthLow == 0)
+                .Skip((pageNum - 1) * pageSize)
+                .Take(pageSize)
+                .ToList()),
+                PageNumberingInfo = new PageNumberingInfo
+                {
+                    NumItemsPerPage = pageSize,
+                    CurrentPage = pageNum,
+                    //get the count of items and if there is a specified team get the count for that team.
+                    TotalNumItems = (_context.MainTbl
+                .Where(t => t.BurialLocationNs == burialLocationNS || burialLocationNS == null)
+                .Where(t => t.BurialLocationEw == burialLocationEW || burialLocationEW == null)
+                .Where(t => t.GenderBodyCol == gender || gender == null)
+                .Where(t => t.HairColor == hairColor || hairColor == null)
+                .Where(t => t.LengthOfRemains < lengthHigh || lengthHigh == 0)
+                .Where(t => t.LengthOfRemains > lengthLow || lengthLow == 0)
+                .Count())
+                },
+                Filters = new Filters
+                {
+                    hairColor = hairColor,
+                    gender = gender,
+                    burialLocationEW = burialLocationEW,
+                    burialLocationNS = burialLocationNS,
+                    lengthLow = lengthLow,
+                    lengthHigh = lengthHigh
+                }
+            });
+        }
         //add page, pulled up when add button is pressed
         [HttpGet]
         public IActionResult Add()
