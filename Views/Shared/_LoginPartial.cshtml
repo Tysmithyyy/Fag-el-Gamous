@@ -14,10 +14,6 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="BurialRecordsAdmin"> All Burial Records</a>
-        </li>
-
-        <li class="nav-item">
             <a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
         </li>
         <li class="nav-item">
@@ -28,10 +24,6 @@
     }
     else
     {
-        //if not logged in, leads to burial records page with no edit and delete buttons
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="BurialRecords"> All Burial Records</a>
-        </li>
         <li class="nav-item">
             <a class="nav-link text-dark" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
         </li>
