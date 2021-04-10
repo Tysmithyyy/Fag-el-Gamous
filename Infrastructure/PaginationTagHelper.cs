@@ -22,6 +22,8 @@ namespace Fag_el_Gamous.Infrastructure
 
         public PageNumberingInfo PageInfo { get; set; }
 
+        public Filters Filters { get; set; }
+
         //Dictionary of key value pairs
         [HtmlAttributeName(DictionaryAttributePrefix = "page-url-")]
         public Dictionary<string, object> KeyValuePairs { get; set; } = new Dictionary<string, object>();
@@ -50,6 +52,7 @@ namespace Fag_el_Gamous.Infrastructure
             };
 
             KeyValuePairs["pageNum"] = PageInfo.CurrentPage - 1;
+            KeyValuePairs["hairColor"] = Filters.hairColor;
             previousindividualTag.Attributes["href"] = urlHelp.Action("BurialRecords", KeyValuePairs);
             previousindividualTag.Attributes["class"] = "page-link";
             previousindividualTag.InnerHtml.Append("Previous");

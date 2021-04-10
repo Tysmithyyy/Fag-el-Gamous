@@ -53,8 +53,12 @@ namespace Fag_el_Gamous
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute("haircolor",
+                    "/{pagenum}/{hairColor}",
+                    new { controller = "Home", action = "BurialRecords" });
+
                 endpoints.MapControllerRoute("pagenum",
-                    "/Page/{pagenum}",
+                    "PageNum/{pagenum}",
                     new { controller = "Home", action = "BurialRecords" });
 
                 endpoints.MapControllerRoute(
