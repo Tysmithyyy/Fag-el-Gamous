@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Fag_el_Gamous.Migrations
 {
     [DbContext(typeof(AuthContext))]
-    [Migration("20210410163626_auth")]
+    [Migration("20210410172541_auth")]
     partial class auth
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
