@@ -1,0 +1,147 @@
+﻿
+@{
+}
+@model MainTbl
+
+
+<h3>Location of Burial</h3>
+<div class="border">
+    <!--burial location NS-->
+    <div>
+        <label>Burial Location (North/South)</label>
+        <p>@Model.BurialLocationNs</p>
+    </div>
+
+    <!--burial location EW-->
+    <div>
+        <label>Burial Location (East/West)</label>
+        <p>@Model.BurialLocationEw</p>
+    </div>
+
+    <!--low pair NS-->
+    <div>
+        <label>Low pair (North/South)</label>
+        <p>@Model.LowPairNs</p>
+    </div>
+
+    <!--high pair NS-->
+    <div>
+        <label>High pair (North/South)</label>
+        <p>@Model.HighPairNs</p>
+    </div>
+
+    <!--low pair EW-->
+    <div>
+        <label>Low pair (East/West)</label>
+        <p>@Model.LowPairEw</p>
+    </div>
+
+    <!--high pair EW-->
+    <div>
+        <label>High pair (East/West)</label>
+        <p>@Model.HighPairEw</p>
+    </div>
+
+    <!--burial subplot-->
+    <div>
+        <label>Burial Subplot</label>
+        <p>@Model.BurialSubplot</p>
+    </div>
+
+    <!--burial number-->
+    <div>
+        <label>Burial Number</label>
+        <p>@Model.BurialNumber</p>
+    </div>
+
+</div>
+
+
+<h3>Orientation of Burial</h3>
+<div class="border">
+    <!--south to head-->
+    <div>
+        <label>South to Head </label>
+        <p>@Model.SouthToHead</p>
+    </div>
+
+    <!--south to feet-->
+    <div>
+        <label>South to Feet </label>
+        <p>@Model.SouthToFeet</p>
+    </div>
+
+    <!--east to head-->
+    <div>
+        <label>East to Head </label>
+        <p>@Model.EastToHead</p>
+    </div>
+
+    <!--east to feet-->
+    <div>
+        <label>East to Feet </label>
+        <p>@Model.EastToFeet</p>
+    </div>
+
+    <!--legnth-->
+    <div>
+        <label>Length of Remains</label>
+        <p>@Model.LengthOfRemains</p>
+    </div>
+    <!--depth-->
+    <div>
+        <label>Burial Depth </label>
+        <p>@Model.BurialDepth</p>
+    </div>
+
+</div>
+
+<h3>Miscellaneous Information </h3>
+<div class="border">
+    <!--photo yes no-->
+    <!--burial goods yes no (references artifact found)-->
+    <div>
+        <label>Artifact Found? </label>
+        <p>@Model.ArtifactFound</p>
+    </div>
+
+    <!--Hair color-->
+    <div>
+        <label>Hair color or specimen </label>
+        <p>@Model.HairColor</p>
+    </div>
+
+    <!--AGE-->
+    <!--<div class="form-group">
+        <label asp-for="AGE">Estimated Age (at time of death) </label>
+        <select class="form-control col-3" asp-for="EstimateAge">
+            <option value="">Select One</option>
+            <option value="Adult">Adult</option>
+            <option value="Child">Child</option>
+            <option value="Neonate/Infant">Infant</option>
+        </select>
+    </div>
+        -->
+    <!--excavation recorder-->
+    <!--<div class="form-group">
+        <label asp-for="RecorderName">Researcher </label>
+            <input class="form-control col-3" asp-for="RecorderName" />
+
+    </div>
+        -->
+    <!--Date-->
+    <div>
+        <label>Year Exhumed </label>
+        <p>@Model.YearFound</p>
+    </div>
+
+    <div>
+        <label>Month Exhumed </label>
+        <p>@Model.MonthFound</p>
+    </div>
+
+    <div>
+        <label>Day Exhumed </label>
+        <p>@Model.DayFound</p>
+    </div>
+</div>

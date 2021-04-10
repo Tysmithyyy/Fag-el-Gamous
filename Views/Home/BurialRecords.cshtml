@@ -85,7 +85,15 @@
     <tbody>
         @foreach (var x in Model.Records) { 
         <tr>
-            <td>View Details</td>
+            <td>
+                <form asp-action="SingleRecord" method="get">
+                    <input type="hidden" name="BurialId"
+                         value="@x.BurialId" />
+                    <button type="submit" class="btn btn-sm btn-primary">
+                        View Details
+                    </button>
+                </form>
+            </td>
             <td>@x.BurialLocationNs @x.LowPairNs/@x.HighPairNs @x.BurialLocationEw @x.LowPairEw/@x.HighPairEw @x.BurialSubplot</td>
             <td>@x.BurialNumber</td>
             <td>
@@ -112,7 +120,7 @@
                 <form asp-action="Edit" method="get">
                     <input type="hidden" name="BurialId"
                            value="@x.BurialId" />
-                    <button type="submit" class="btn btn-sm btn-danger">
+                    <button type="submit" class="btn btn-sm btn-primary">
                         Edit
                     </button>
                 </form>

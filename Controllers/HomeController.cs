@@ -120,6 +120,12 @@ namespace Fag_el_Gamous.Controllers
 
         //once save button is pressed on the edit page, function to update the context
 
+        public IActionResult SingleRecord(string burialid)
+        {
+            var burial = _context.MainTbl.Where(b => b.BurialId == burialid).FirstOrDefault();
+
+            return View(burial);
+        }
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
