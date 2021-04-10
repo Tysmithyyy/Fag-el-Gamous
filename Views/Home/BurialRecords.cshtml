@@ -99,15 +99,15 @@
     <thead class="thead-dark">
         <tr>
             <th></th>
-            <th>Burial Location</th>
-            <th>Burial Number</th>
-            <th>Description</th>
-            <th>Length of Remains</th>
-            <th>Artifacts Description</th>
-            <th>Hair Color</th>
-            <th>Gender</th>
-            <th>Estimated Age</th>
-            <th>Date Found</th>
+            <th class="text-nowrap">Burial Location</th>
+            <th class="text-nowrap">Burial Number</th>
+            <th class="text-nowrap">Description</th>
+            <th class="text-nowrap">Length of Remains</th>
+            <th class="text-nowrap">Artifacts Description</th>
+            <th class="text-nowrap">Hair Color</th>
+            <th class="text-nowrap">Gender</th>
+            <th class="text-nowrap">Estimated Age</th>
+            <th class="text-nowrap">Date Found</th>
             <th></th>
             <th></th>
         </tr>
@@ -116,7 +116,7 @@
         @foreach (var x in Model.Records)
         {
             <tr>
-                <td>
+                <td  class="text-nowrap">
                     <form asp-action="SingleRecord" method="get">
                         <input type="hidden" name="BurialId"
                                value="@x.BurialId" />
@@ -125,7 +125,7 @@
                         </button>
                     </form>
                 </td>
-                <td>@x.BurialLocationNs @x.LowPairNs/@x.HighPairNs @x.BurialLocationEw @x.LowPairEw/@x.HighPairEw @x.BurialSubplot</td>
+                <td class="text-nowrap">@x.BurialLocationNs @x.LowPairNs/@x.HighPairNs @x.BurialLocationEw @x.LowPairEw/@x.HighPairEw @x.BurialSubplot</td>
                 <td>@x.BurialNumber</td>
                 <td>
                     @if (x.BurialSituation != "")
@@ -140,12 +140,12 @@
                         </div>
                     }
                 </td>
-                <td>@x.LengthOfRemains</td>
-                <td>@x.ArtifactsDescription</td>
-                <td>@x.HairColor</td>
-                <td>@x.GenderBodyCol</td>
-                <td>@x.EstimateAge</td>
-                <td>@x.MonthFound @x.DayFound, @x.YearFound</td>
+                <td class="text-nowrap">@x.LengthOfRemains</td>
+                <td class="text-nowrap">@x.ArtifactsDescription</td>
+                <td class="text-nowrap">@x.HairColor</td>
+                <td class="text-nowrap">@x.GenderBodyCol</td>
+                <td class="text-nowrap">@x.EstimateAge</td>
+                <td class="text-nowrap">@x.MonthFound @x.DayFound, @x.YearFound</td>
 
                 <!--is the user is authenticated, the button will show, if the user is not authenticated, then the button will be hidden-->
 
