@@ -15,6 +15,8 @@ namespace Fag_el_Gamous.Controllers
         private readonly ILogger<HomeController> _logger;
         private gamousContext _context;
 
+        private string editBurialId;
+
         public HomeController(ILogger<HomeController> logger, gamousContext ctx)
         {
             _logger = logger;
@@ -115,8 +117,18 @@ namespace Fag_el_Gamous.Controllers
         public IActionResult Edit(string burialid)
         {
             var burial = _context.MainTbl.Where(b => b.BurialId == burialid).FirstOrDefault();
-
             return View(burial);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(MainTbl burial)
+        {
+            string id = burial.BurialLocationNs + " " + burial.LowPairNs + "/" + burial.HighPairNs
+                    + " " + burial.BurialLocationEw + " " + burial.LowPairEw + "/" + burial.HighPairEw
+                    + " " + burial.BurialSubplot + " #" + burial.BurialNumber;
+            burial.BurialId = id;
+            _context.MainTbl.Update(burial);
+            return View("BurialRecords");
         }
 
         //once save button is pressed on the edit page, function to update the context
