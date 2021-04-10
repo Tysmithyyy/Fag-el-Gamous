@@ -29,6 +29,7 @@ namespace Fag_el_Gamous
             services.AddDbContext<gamousContext>(options =>
                options.UseSqlite(Configuration["ConnectionStrings:GamousDbConnection"])
             );
+            services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,6 +50,7 @@ namespace Fag_el_Gamous
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -61,6 +63,8 @@ namespace Fag_el_Gamous
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapRazorPages();
             });
         }
     }
