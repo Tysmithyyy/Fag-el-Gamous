@@ -15,10 +15,10 @@
     <div class="card-header">
         <ul class="nav nav-tabs card-header-tabs">
             <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#foo">General</a>
+                <a class="nav-link active" data-toggle="tab" href="#foo">Filters</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#bar">Bar</a>
+                <a class="nav-link" data-toggle="tab" href="#bar">Search</a>
             </li>
         </ul>
     </div>
@@ -30,37 +30,50 @@
                     {
                         <div class="row">
                             <div class="col-3">
-                                <h4>Filters:</h4>
                                 <input class="btn btn-primary" type="submit" value="Filter" />
                                 @Html.ActionLink("Clear Filters", "BurialRecords", "Home", "", new { @class = "text-light btn btn-danger" })
-                                
+
                             </div>
                             <div class="col-9">
                                 <div class="form-row">
-                                    <div class="form-group col-4">
+                                    <div class="form-group col-3">
                                         <text>Burial Location NS </text>@Html.DropDownList("burialLocationNS", new SelectList(ViewBag.BurialLocationNS), "", new { @class = "form-control" })
                                     </div>
-                                    <div class="form-group col-4">
+                                    <div class="form-group col-3">
                                         <text>Burial Location EW </text>@Html.DropDownList("burialLocationEW", new SelectList(ViewBag.BurialLocationEW), "", new { @class = "form-control" })
                                     </div>
-                                    <div class="form-group col-4">
+                                    <div class="form-group col-3">
                                         <text>Length of Remains </text>
                                         <div class="row">
-                                            <div class="form-group col-6 pr-1">
+                                            <div class="form-group col-6 pr-0">
                                                 @Html.TextBox("lengthLow", "min", new { @class = "form-control" })
                                             </div>
-                                            <div class="form-group col-6">
+                                            <div class="form-group col-6 pr-0">
                                                 @Html.TextBox("lengthHigh", "max", new { @class = "form-control" })
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-row">
-                                    <div class="form-group col-4">
+                                    <div class="form-group col-3">
                                         <text>Gender </text>@Html.DropDownList("gender", new SelectList(ViewBag.Gender), new { @class = "form-control" })
                                     </div>
-                                    <div class="form-group col-4">
+                                    <div class="form-group col-3">
                                         <text>Hair Color </text>@Html.DropDownList("hairColor", new SelectList(ViewBag.HairColor), new { @class = "form-control" })
+                                    </div>
+                                    <div class="form-group col-3">
+                                        <text>Year Found </text>@Html.DropDownList("yearFound", new SelectList(ViewBag.yearFound), new { @class = "form-control" })
+                                    </div>
+                                    <div class="form-group col-3">
+                                        <text>Length of Remains </text>
+                                        <div class="row">
+                                            <div class="form-group col-6 pr-0">
+                                                @Html.TextBox("ageLow", "min", new { @class = "form-control" })
+                                            </div>
+                                            <div class="form-group col-6 pr-0">
+                                                @Html.TextBox("ageHigh", "max", new { @class = "form-control" })
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -68,20 +81,19 @@
                     }
                 </div>
             </div>
-            <div class="tab-pane" id="bar">BAR</div>
+            <div class="tab-pane" id="bar">
+                @using (Html.BeginForm("BurialRecords", "Home", new { pageNum = 1 }, FormMethod.Get))
+                {
+                    <div class="form-group col-6 pr-0">
+                        @Html.TextBox("searchString", "", new { @class = "form-control" })
+                    </div>
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <br />  }
+            </div>
         </div>
     </div>
 </div>
 
-<nav class="navbar navbar-light bg-light">
-    <form class="form-inline">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        <br />
-    </form>
-
-    <!--remove add button from this form-->
-</nav>
 
 <table class="table table-hover">
     <thead class="thead-dark">
@@ -135,13 +147,13 @@
                 <td>@x.EstimateAge</td>
                 <td>@x.MonthFound @x.DayFound, @x.YearFound</td>
 
-                    <!--is the user is authenticated, the button will show, if the user is not authenticated, then the button will be hidden-->
+                <!--is the user is authenticated, the button will show, if the user is not authenticated, then the button will be hidden-->
 
 
-                    @if (User.Identity.IsAuthenticated)
-                    {
+                @if (User.Identity.IsAuthenticated)
+                {
 
-                        //if logged in, edit and delete buttons will show
+                    //if logged in, edit and delete buttons will show
                     <td>
 
                         <!--edit button-->
@@ -166,18 +178,20 @@
                             </button>
                         </form>
                     </td>
-                
 
-            }
 
-            else
-            {
-                
-            }
+                }
 
-                    </tr>
-         }
+                else
+                {
+
+                }
+
+            </tr>
+        }
 
     </tbody>
 </table>
+<caption>@Model.PageNumberingInfo.TotalNumItems records on @Model.PageNumberingInfo.NumPages pages</caption>
+
 <div class="pagination" page-info="@Model.PageNumberingInfo" filters="@Model.Filters"></div>
