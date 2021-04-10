@@ -40,13 +40,13 @@ namespace Fag_el_Gamous.Controllers
         }
 
         [HttpGet]
-        public IActionResult BurialRecords(string burialLocationNS, string burialLocationEW, string gender, string hairColor, int pageNum = 1)
+        public IActionResult BurialRecords(string burialLocationNS, string burialLocationEW, int lengthLow, int lengthHigh, string gender, string hairColor, int pageNum = 1)
         {
             int pageSize = 10;
-            ViewBag.BurialLocationNS = _context.MainTbl.Select(t => t.BurialLocationNs).Distinct().OrderBy(x => x);
-            ViewBag.BurialLocationEW = _context.MainTbl.Select(t => t.BurialLocationEw).Distinct().OrderBy(x => x);
-            ViewBag.Gender = _context.MainTbl.Select(t => t.GenderBodyCol).Distinct().OrderBy(x => x);
-            ViewBag.HairColor = _context.MainTbl.Select(t => t.HairColor).Distinct().OrderBy(x => x);
+            ViewBag.BurialLocationNS = _context.MainTbl.Where(t => t.BurialLocationNs != null).Select(t => t.BurialLocationNs).Distinct().OrderBy(x => x);
+            ViewBag.BurialLocationEW = _context.MainTbl.Where(t => t.BurialLocationEw != null).Select(t => t.BurialLocationEw).Distinct().OrderBy(x => x);
+            ViewBag.Gender = _context.MainTbl.Where(t => t.GenderBodyCol != null).Select(t => t.GenderBodyCol).Distinct().OrderBy(x => x);
+            ViewBag.HairColor = _context.MainTbl.Where(t => t.HairColor != null).Select(t => t.HairColor).Distinct().OrderBy(x => x);
             
 
             return View(new RecordsViewModel
@@ -57,6 +57,8 @@ namespace Fag_el_Gamous.Controllers
                 .Where(t => t.BurialLocationEw == burialLocationEW || burialLocationEW == null)
                 .Where(t => t.GenderBodyCol == gender || gender == null)
                 .Where(t => t.HairColor == hairColor || hairColor == null)
+                .Where(t => t.LengthOfRemains < lengthHigh || lengthHigh == 0)
+                .Where(t => t.LengthOfRemains > lengthLow || lengthLow == 0)
                 .Skip((pageNum - 1) * pageSize)
                 .Take(pageSize)
                 .ToList()),
@@ -70,11 +72,18 @@ namespace Fag_el_Gamous.Controllers
                 .Where(t => t.BurialLocationEw == burialLocationEW || burialLocationEW == null)
                 .Where(t => t.GenderBodyCol == gender || gender == null)
                 .Where(t => t.HairColor == hairColor || hairColor == null)
+                .Where(t => t.LengthOfRemains < lengthHigh || lengthHigh == 0)
+                .Where(t => t.LengthOfRemains > lengthLow || lengthLow == 0)
                 .Count())
                 },
                 Filters = new Filters
                 {                    
-                    hairColor = hairColor
+                    hairColor = hairColor,
+                    gender = gender,
+                    burialLocationEW = burialLocationEW,
+                    burialLocationNS = burialLocationNS,
+                    lengthLow = lengthLow,
+                    lengthHigh = lengthHigh
                 }
             });
         }

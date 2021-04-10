@@ -32,10 +32,21 @@
                             <div class="col-9">
                                 <div class="form-row">
                                     <div class="form-group col-4">
-                                        <text>Burial Location NS </text>@Html.DropDownList("burialLocationNS", new SelectList(ViewBag.BurialLocationNS), new { @class = "form-control" })
+                                        <text>Burial Location NS </text>@Html.DropDownList("burialLocationNS", new SelectList(ViewBag.BurialLocationNS), "", new { @class = "form-control" })
                                     </div>
                                     <div class="form-group col-4">
-                                        <text>Burial Location EW </text>@Html.DropDownList("burialLocationEW", new SelectList(ViewBag.BurialLocationEW), new { @class = "form-control" })
+                                        <text>Burial Location EW </text>@Html.DropDownList("burialLocationEW", new SelectList(ViewBag.BurialLocationEW), "", new { @class = "form-control" })
+                                    </div>
+                                    <div class="form-group col-4">
+                                        <text>Length of Remains </text>
+                                        <div class="row">
+                                            <div class="form-group col-6 pr-1">
+                                                @Html.TextBox("lengthLow", "min", new { @class = "form-control" })
+                                            </div>
+                                            <div class="form-group col-6">
+                                                @Html.TextBox("lengthHigh", "max", new { @class = "form-control" })
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-row">
