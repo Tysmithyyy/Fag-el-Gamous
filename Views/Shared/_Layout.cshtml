@@ -26,12 +26,16 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="BurialRecords"> All Burial Records</a>
                         </li>
-
-                        <partial name="_LoginPartial" />
-
-                    </ul>
+                        @if (User.Identity.IsAuthenticated)
+                        { 
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Add"> Add Burial Records</a>
+                            </li>
+                         }
+                        </ul>
 
                 </div>
+                <partial name="_LoginPartial" />
             </div>
 
         </nav>
