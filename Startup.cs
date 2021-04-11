@@ -1,3 +1,4 @@
+using BetterAmazon.Models;
 using Fag_el_Gamous.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -28,6 +29,7 @@ namespace Fag_el_Gamous
             services.AddControllersWithViews();
             services.AddDbContext<gamousContext>(options =>
                options.UseSqlite(Configuration["ConnectionStrings:GamousDbConnection"])
+               //options.UseSqlServer(Helpers.GetRDSConnectionString()
             );
             services.AddRazorPages();
         }

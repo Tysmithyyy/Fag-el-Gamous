@@ -19,6 +19,12 @@ namespace Fag_el_Gamous.Models
         {
         }
 
+
+        public static gamousContext Create() //Add this change
+        {
+            return new gamousContext();
+        }
+
         public virtual DbSet<BioData> BioData { get; set; }
         public virtual DbSet<C14> C14 { get; set; }
         public virtual DbSet<FagElGamousAll> FagElGamousAll { get; set; }
