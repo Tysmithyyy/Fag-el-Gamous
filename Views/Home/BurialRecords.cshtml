@@ -30,8 +30,8 @@
                     {
                         <div class="row">
                             <div class="col-3">
-                                <input class="btn btn-primary" type="submit" value="Filter" />
-                                @Html.ActionLink("Clear Filters", "BurialRecords", "Home", "", new { @class = "text-light btn btn-danger" })
+                                <input class="btn btn-primary btn-fill" type="submit" value="Filter" />
+                                @Html.ActionLink("Clear Filters", "BurialRecords", "Home", "", new { @class = "text-light btn btn-fill btn-danger" })
 
                             </div>
                             <div class="col-9">
@@ -65,7 +65,7 @@
                                         <text>Year Found </text>@Html.DropDownList("yearFound", new SelectList(ViewBag.yearFound), new { @class = "form-control" })
                                     </div>
                                     <div class="form-group col-3">
-                                        <text>Length of Remains </text>
+                                        <text>Estimated Age </text>
                                         <div class="row">
                                             <div class="form-group col-6 pr-0">
                                                 @Html.TextBox("ageLow", "min", new { @class = "form-control" })
@@ -84,114 +84,119 @@
             <div class="tab-pane" id="bar">
                 @using (Html.BeginForm("BurialRecords", "Home", new { pageNum = 1 }, FormMethod.Get))
                 {
-                    <div class="form-group col-6 pr-0">
+                <div class="row">
+                    <div class="form-group col-6">
                         @Html.TextBox("searchString", "", new { @class = "form-control" })
                     </div>
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                <br />  }
+                    <button class="btn btn-fill btn-md btn-success" type="submit">Search</button>
+                </div>  }
             </div>
         </div>
     </div>
 </div>
 
-
-<table class="table table-hover">
-    <thead class="thead-dark">
-        <tr>
-            <th></th>
-            <th class="text-nowrap">Burial Location</th>
-            <th class="text-nowrap">Burial Number</th>
-            <th class="text-nowrap">Description</th>
-            <th class="text-nowrap">Length of Remains</th>
-            <th class="text-nowrap">Artifacts Description</th>
-            <th class="text-nowrap">Hair Color</th>
-            <th class="text-nowrap">Gender</th>
-            <th class="text-nowrap">Estimated Age</th>
-            <th class="text-nowrap">Date Found</th>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var x in Model.Records)
-        {
-            <tr>
-                <td  class="text-nowrap">
-                    <form asp-action="SingleRecord" method="get">
-                        <input type="hidden" name="BurialId"
-                               value="@x.BurialId" />
-                        <button type="submit" class="btn btn-sm btn-primary">
-                            View Details
-                        </button>
-                    </form>
-                </td>
-                <td class="text-nowrap">@x.BurialLocationNs @x.LowPairNs/@x.HighPairNs @x.BurialLocationEw @x.LowPairEw/@x.HighPairEw @x.BurialSubplot</td>
-                <td>@x.BurialNumber</td>
-                <td>
-                    @if (x.BurialSituation != "")
-                    {
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                View Description
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <text class="p-1">@x.BurialSituation</text>
-                            </div>
-                        </div>
-                    }
-                </td>
-                <td class="text-nowrap">@x.LengthOfRemains</td>
-                <td class="text-nowrap">@x.ArtifactsDescription</td>
-                <td class="text-nowrap">@x.HairColor</td>
-                <td class="text-nowrap">@x.GenderBodyCol</td>
-                <td class="text-nowrap">@x.EstimateAge</td>
-                <td class="text-nowrap">@x.MonthFound @x.DayFound, @x.YearFound</td>
-
-                <!--is the user is authenticated, the button will show, if the user is not authenticated, then the button will be hidden-->
-
-
-                @if (User.Identity.IsAuthenticated)
+<div class="row justify-content-center">
+    <div class="col-auto">
+        <table class="table table-hover table-responsive text-nowrap">
+            <thead class="thead-dark">
+                <tr>
+                    <th></th>
+                    <th>Burial Location</th>
+                    <th>Burial Number</th>
+                    <th>Description</th>
+                    <th>Length of Remains</th>
+                    <th>Artifacts Description</th>
+                    <th>Hair Color</th>
+                    <th>Gender</th>
+                    <th>Estimated Age</th>
+                    <th>Date Found</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var x in Model.Records)
                 {
+                    <tr>
+                        <td>
+                            <form asp-action="SingleRecord" method="get">
+                                <input type="hidden" name="BurialId"
+                                       value="@x.BurialId" />
+                                <button type="submit" class="btn btn-sm btn-fill btn-primary">
+                                    View Details
+                                </button>
+                            </form>
+                        </td>
+                        <td>@x.BurialLocationNs @x.LowPairNs/@x.HighPairNs @x.BurialLocationEw @x.LowPairEw/@x.HighPairEw @x.BurialSubplot</td>
+                        <td>@x.BurialNumber</td>
+                        <td>
+                            @if (x.BurialSituation != "")
+                            {
+                                <div class="dropdown">
+                                    <button class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                                        View Description
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                        <li role="presentation"><div class="menuitem text-wrap" tabindex="-1">@x.BurialSituation</div></li>
+                                    </ul>
+                                </div>
+                            }
+                        </td>
+                        <td>@x.LengthOfRemains</td>
+                        <td>@x.ArtifactsDescription</td>
+                        <td>@x.HairColor</td>
+                        <td>@x.GenderBodyCol</td>
+                        <td>@x.EstimateAge</td>
+                        <td>@x.MonthFound @x.DayFound, @x.YearFound</td>
 
-                    //if logged in, edit and delete buttons will show
-                    <td>
-
-                        <!--edit button-->
-
-                        <form asp-action="Edit" method="get">
-
-                            <input type="hidden" name="BurialId"
-                                   value="@x.BurialId" />
-                            <button type="submit" class="btn btn-sm btn-primary">
-                                Edit
-                            </button>
-                        </form>
-                    </td>
-
-                    <td>
-                        <!--delete button-->
-                        <form asp-action="Delete" method="post">
-                            <input type="hidden" name="BurialId"
-                                   value="@x.BurialId" />
-                            <button type="submit" class="btn btn-sm btn-danger">
-                                Delete
-                            </button>
-                        </form>
-                    </td>
+                        <!--is the user is authenticated, the button will show, if the user is not authenticated, then the button will be hidden-->
 
 
+                        @if (User.Identity.IsAuthenticated)
+                        {
+
+                            //if logged in, edit and delete buttons will show
+                            <td>
+
+                                <!--edit button-->
+
+                                <form asp-action="Edit" method="get">
+
+                                    <input type="hidden" name="BurialId"
+                                           value="@x.BurialId" />
+                                    <button type="submit" class="btn btn-sm btn-primary">
+                                        Edit
+                                    </button>
+                                </form>
+                            </td>
+
+                            <td>
+                                <!--delete button-->
+                                <form asp-action="Delete" method="post">
+                                    <input type="hidden" name="BurialId"
+                                           value="@x.BurialId" />
+                                    <button type="submit" class="btn btn-sm btn-danger">
+                                        Delete
+                                    </button>
+                                </form>
+                            </td>
+
+
+                        }
+
+                        else
+                        {
+
+                        }
+
+                    </tr>
                 }
 
-                else
-                {
+            </tbody>
+        </table>
+    </div>
+</div>
+        <caption>@Model.PageNumberingInfo.TotalNumItems records on @Model.PageNumberingInfo.NumPages pages</caption>
 
-                }
-
-            </tr>
-        }
-
-    </tbody>
-</table>
-<caption>@Model.PageNumberingInfo.TotalNumItems records on @Model.PageNumberingInfo.NumPages pages</caption>
-
-<div class="pagination" page-info="@Model.PageNumberingInfo" filters="@Model.Filters"></div>
+        <ul class="pagination pagination-primary" page-info="@Model.PageNumberingInfo" filters="@Model.Filters"></ul>

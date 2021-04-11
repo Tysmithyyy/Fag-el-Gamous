@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Fag_el_Gamous.Infrastructure
 {
-    [HtmlTargetElement("div", Attributes = "page-info, filters")]
+    [HtmlTargetElement("ul", Attributes = "page-info, filters")]
     public class PaginationTagHelper : TagHelper
     {
         private IUrlHelperFactory urlInfo;
@@ -36,10 +36,10 @@ namespace Fag_el_Gamous.Infrastructure
         {
             IUrlHelper urlHelp = urlInfo.GetUrlHelper(ViewContext);
 
-            TagBuilder finishedTag = new TagBuilder("div");
+            TagBuilder finishedTag = new TagBuilder("ul");
 
             //Tag builder for previous
-            TagBuilder previouslistTag = new TagBuilder("div");
+            TagBuilder previouslistTag = new TagBuilder("li");
             TagBuilder previousindividualTag = new TagBuilder("a");
 
             if (PageInfo.CurrentPage == 1)
@@ -64,7 +64,7 @@ namespace Fag_el_Gamous.Infrastructure
             KeyValuePairs["searchString"] = Filters.searchString;
             previousindividualTag.Attributes["href"] = urlHelp.Action("BurialRecords", KeyValuePairs);
             previousindividualTag.Attributes["class"] = "page-link";
-            previousindividualTag.InnerHtml.Append("Previous");
+            previousindividualTag.InnerHtml.Append("«");
 
             previouslistTag.InnerHtml.AppendHtml(previousindividualTag);
             finishedTag.InnerHtml.AppendHtml(previouslistTag);
@@ -73,7 +73,7 @@ namespace Fag_el_Gamous.Infrastructure
             {
                 if (i > 0 && i < (PageInfo.NumPages + 1))
                 {
-                    TagBuilder listTag = new TagBuilder("div");
+                    TagBuilder listTag = new TagBuilder("li");
                     TagBuilder individualTag = new TagBuilder("a");
 
                     if (i == (PageInfo.CurrentPage))
@@ -95,7 +95,7 @@ namespace Fag_el_Gamous.Infrastructure
             }
 
             //Tag builder for next
-            TagBuilder nextlistTag = new TagBuilder("div");
+            TagBuilder nextlistTag = new TagBuilder("li");
             TagBuilder nextindividualTag = new TagBuilder("a");
 
             if (PageInfo.CurrentPage == (PageInfo.NumPages))
@@ -110,7 +110,7 @@ namespace Fag_el_Gamous.Infrastructure
             KeyValuePairs["pageNum"] = PageInfo.CurrentPage + 1;
             nextindividualTag.Attributes["href"] = urlHelp.Action("BurialRecords", KeyValuePairs);
             nextindividualTag.Attributes["class"] = "page-link";
-            nextindividualTag.InnerHtml.Append("Next");
+            nextindividualTag.InnerHtml.Append("»");
 
             nextlistTag.InnerHtml.AppendHtml(nextindividualTag);
             finishedTag.InnerHtml.AppendHtml(nextlistTag);
