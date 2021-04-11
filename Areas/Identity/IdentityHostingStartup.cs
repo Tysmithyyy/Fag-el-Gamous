@@ -17,8 +17,7 @@ namespace Fag_el_Gamous.Areas.Identity
         {
             builder.ConfigureServices((context, services) => {
                 services.AddDbContext<AuthContext>(options =>
-                    options.UseSqlServer(
-                        context.Configuration.GetConnectionString("AuthContextConnection")));
+                    options.UseSqlServer(context.Configuration.GetConnectionString("AuthContextConnection")));
 
                 services.AddDefaultIdentity<Researcher>(options => options.SignIn.RequireConfirmedAccount = true)
                     .AddEntityFrameworkStores<AuthContext>();
