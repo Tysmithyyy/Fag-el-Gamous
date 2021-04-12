@@ -461,7 +461,7 @@ namespace Fag_el_Gamous.Models
 
             modelBuilder.Entity<MainTbl>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(a=>new { a.BurialId });
 
                 entity.ToTable("main_tbl");
 
