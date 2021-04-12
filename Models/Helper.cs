@@ -17,7 +17,7 @@ namespace BetterAmazon.Models
 
 
 
-			string dbname = appConfig["aam7gxxxne51of"];
+			//string dbname = appConfig["aam7gxxxne51of"];
 
 
 
@@ -25,15 +25,15 @@ namespace BetterAmazon.Models
 
 
 
-			string username = appConfig["admin"];
-			string password = appConfig["Admin!11"];
-			string hostname = appConfig["aam7gxxxne51of.chjpza0zaptm.us-east-1.rds.amazonaws.com"];
-			string port = appConfig["1433"];
+			//string username = appConfig["admin"];
+			//string password = appConfig["Admin!11"];
+			//string hostname = appConfig["aam7gxxxne51of.chjpza0zaptm.us-east-1.rds.amazonaws.com"];
+			//string port = appConfig["1433"];
 
 
 
 			//return "Data Source=" + hostname + ";Initial Catalog=ebdb" + ";User ID=" + username + ";Password=" + password + ";";
-			return "Data Source=aam7gxxxne51of.chjpza0zaptm.us-east-1.rds.amazonaws.com,1433;Initial Catalog=aam7gxxxne51of;User ID=admin;Password=Admin!11;";
+			return "Data Source=aam7gxxxne51of.chjpza0zaptm.us-east-1.rds.amazonaws.com,1433;Initial Catalog=msdb;User ID=admin;Password=Admin!11;";
 		}
 	}
 }
