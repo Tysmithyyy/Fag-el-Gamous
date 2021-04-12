@@ -13,7 +13,7 @@ namespace BetterAmazon.Models
 	{
 		public static string GetRDSConnectionString()
 		{
-			var appConfig = ConfigurationManager.AppSettings;
+			//var appConfig = ConfigurationManager.AppSettings;
 
 
 
