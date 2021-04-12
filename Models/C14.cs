@@ -10,21 +10,31 @@ namespace Fag_el_Gamous.Models
     public partial class C14
     {
         public string BurialId { get; set; }
-        public string Rack { get; set; }
-        public string Bag { get; set; }
-        public string Low { get; set; }
-        public string High { get; set; }
+        public int? Rack { get; set; }
+        public int? NSPair { get; set; }
         public string NS { get; set; }
-        public string Low1 { get; set; }
-        public string High1 { get; set; }
+        public int? EWPair { get; set; }
         public string EW { get; set; }
-        public string Area { get; set; }
-        public string Burial { get; set; }
-        public long? Cluster { get; set; }
-        public string Date { get; set; }
-        public string PreviouslySampled { get; set; }
+        public string Square { get; set; }
+        public int? Area { get; set; }
+        public int? Burial { get; set; }
+        public int? Rack1 { get; set; }
+        public int? Tube { get; set; }
+        public string Description { get; set; }
+        public int? SizeMl { get; set; }
+        public int? Foci { get; set; }
+        public int? C14Sample2017 { get; set; }
+        public string Location { get; set; }
+        public string QuestionS { get; set; }
+        public int? Number { get; set; }
+        public int? Conventional14cAgeBp { get; set; }
+        public int? _14cCalendarDate { get; set; }
+        public int? Calibrated95CalendarDateMax { get; set; }
+        public int? Calibrated95CalendarDateMin { get; set; }
+        public int? Calibrated95CalendarDateSpan { get; set; }
+        public string Calibrated95CalendarDateAvg { get; set; }
+        public string Category { get; set; }
         public string Notes { get; set; }
-        public string Initials { get; set; }
-        public string AdditionalNotes { get; set; }
+        public string AdditionalNote { get; set; }
     }
 }

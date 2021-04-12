@@ -9,12 +9,12 @@ namespace Fag_el_Gamous.Models
 {
     public partial class SourceInfo
     {
-        public long SourceId { get; set; }
+        public int SourceId { get; set; }
         public string DirName { get; set; }
         public string BaseName { get; set; }
         public string FormatName { get; set; }
         public string DstTable { get; set; }
-        public long? Size { get; set; }
-        public long? Mtime { get; set; }
+        public int? Size { get; set; }
+        public int? Mtime { get; set; }
     }
 }

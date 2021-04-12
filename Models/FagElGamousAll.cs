@@ -9,17 +9,17 @@ namespace Fag_el_Gamous.Models
 {
     public partial class FagElGamousAll
     {
-        public long? ArcGis { get; set; }
+        public int? ArcGis { get; set; }
         public string BurialId { get; set; }
         public string YearOnSkull { get; set; }
         public string MonthOnSkull { get; set; }
-        public long? DateOnSkull { get; set; }
+        public int? DateOnSkull { get; set; }
         public string FieldBook { get; set; }
         public string FieldBookPageNumber { get; set; }
         public string InitialsOfDataEntryExpert { get; set; }
         public string InitialsOfDataEntryChecker { get; set; }
         public string ByuSample { get; set; }
-        public long? BodyAnalysis { get; set; }
+        public int? BodyAnalysis { get; set; }
         public string SkullAtMagazine { get; set; }
         public string PostcraniaAtMagazine { get; set; }
         public string SexSkull2018 { get; set; }
@@ -37,11 +37,11 @@ namespace Fag_el_Gamous.Models
         public string OsteologyUnknownComment { get; set; }
         public string TemporalMandibularJointOsteoarthritisTmjOa { get; set; }
         public string LinearHypoplasiaEnamel { get; set; }
-        public long? AreaHillBurials { get; set; }
-        public long? Tomb { get; set; }
+        public int? AreaHillBurials { get; set; }
+        public int? Tomb { get; set; }
         public string BurialAreaNorthOrSouth { get; set; }
         public string Burialnors { get; set; }
-        public long? BurialAreaEastOrWest { get; set; }
+        public int? BurialAreaEastOrWest { get; set; }
         public string Burialxeorw { get; set; }
         public string Square { get; set; }
         public string BurialNumber { get; set; }
@@ -51,9 +51,9 @@ namespace Fag_el_Gamous.Models
         public string BurialSouthToFeet { get; set; }
         public string BurialDepth { get; set; }
         public string Length { get; set; }
-        public long? YearExcav { get; set; }
+        public int? YearExcav { get; set; }
         public string MonthExcavated { get; set; }
-        public long? DateExcavated { get; set; }
+        public int? DateExcavated { get; set; }
         public string BurialDirection1 { get; set; }
         public string BurialPreservation { get; set; }
         public string BurialWrapping { get; set; }

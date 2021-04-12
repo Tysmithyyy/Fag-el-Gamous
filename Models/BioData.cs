@@ -20,7 +20,7 @@ namespace Fag_el_Gamous.Models
         public string EW { get; set; }
         public string Area { get; set; }
         public string Burial { get; set; }
-        public long? Cluster { get; set; }
+        public int? Cluster { get; set; }
         public string Date { get; set; }
         public string PreviouslySampled { get; set; }
         public string Notes { get; set; }
