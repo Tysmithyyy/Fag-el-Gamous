@@ -28,9 +28,9 @@ namespace Fag_el_Gamous
         {
             services.AddControllersWithViews();
             services.AddDbContext<gamousContext>(options =>
-               options.UseSqlite(Configuration["ConnectionStrings:GamousDbConnection"])
-               //options.UseSqlServer(Helpers.GetRDSConnectionString()
-            );
+               //options.UseSqlite(Configuration["ConnectionStrings:GamousDbConnection"])
+               options.UseSqlServer(Helpers.GetRDSConnectionString()
+            ));
             services.AddRazorPages();
         }
 
