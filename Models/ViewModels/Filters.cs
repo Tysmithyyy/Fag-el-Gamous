@@ -17,5 +17,6 @@ namespace Fag_el_Gamous.Models.ViewModels
         public int ageHigh { get; set; }
         public int ageLow { get; set; }
         public string searchString { get; set; }
+        public string preservationIndex { get; set; }
     }
 }

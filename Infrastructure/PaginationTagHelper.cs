@@ -55,6 +55,7 @@ namespace Fag_el_Gamous.Infrastructure
             KeyValuePairs["hairColor"] = Filters.hairColor;
             KeyValuePairs["gender"] = Filters.gender;
             KeyValuePairs["yearFound"] = Filters.yearFound;
+            KeyValuePairs["preservationIndex"] = Filters.preservationIndex;
             KeyValuePairs["burialLocationEW"] = Filters.burialLocationEW;
             KeyValuePairs["burialLocationNS"] = Filters.burialLocationNS;
             KeyValuePairs["lengthHigh"] = Filters.lengthHigh;
