@@ -2,16 +2,15 @@
 @{
 }
 @model MainTbl
-<h2>Burial Details</h2>
-@if (User.Identity.IsAuthenticated)
-{
+<div class="row">
+    <h2 class="col-4">Burial Details</h2>
+    @if (User.Identity.IsAuthenticated)
+    {
 
-    //if logged in, edit and delete buttons will show
-    <td>
-
+        //if logged in, edit and delete buttons will show
         <!--edit button-->
-
-        <form asp-action="Edit" method="get">
+        <div class="col-8 align-content-start">
+        <form class="m-1" asp-action="Edit" method="get">
 
             <input type="hidden" name="BurialId"
                    value="@Model.BurialId" />
@@ -19,21 +18,18 @@
                 Edit
             </button>
         </form>
-    </td>
-
-    <td>
         <!--delete button-->
-        <form asp-action="Delete" method="post">
+        <form class="m-1" asp-action="Delete" method="post">
             <input type="hidden" name="BurialId"
                    value="@Model.BurialId" />
             <button type="submit" class="btn btn-sm btn-danger">
                 Delete
             </button>
         </form>
-    </td>
+    </div>
 
-
-}
+    }
+</div>
 <div class="card">
     <!--burial location-->
     <div class="card-body">

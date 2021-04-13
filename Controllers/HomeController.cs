@@ -16,10 +16,10 @@ namespace Fag_el_Gamous.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private gamousContext _context;
+        private gamous2Context _context;
         private string connectionString = Helpers.GetRDSConnectionString();
 
-        public HomeController(ILogger<HomeController> logger, gamousContext ctx)
+        public HomeController(ILogger<HomeController> logger, gamous2Context ctx)
         {
             _logger = logger;
             _context = ctx;

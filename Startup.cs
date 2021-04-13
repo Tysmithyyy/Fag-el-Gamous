@@ -27,7 +27,7 @@ namespace Fag_el_Gamous
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddDbContext<gamousContext>(options =>
+            services.AddDbContext<gamous2Context>(options =>
                options.UseSqlServer(Helpers.GetRDSConnectionString()
             )) ;
             services.AddRazorPages();
