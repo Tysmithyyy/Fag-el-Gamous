@@ -1,10 +1,12 @@
-﻿using Fag_el_Gamous.Models;
+﻿using BetterAmazon.Models;
+using Fag_el_Gamous.Models;
 using Fag_el_Gamous.Models.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,6 +17,7 @@ namespace Fag_el_Gamous.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private gamousContext _context;
+        private string connectionString = Helpers.GetRDSConnectionString();
 
         public HomeController(ILogger<HomeController> logger, gamousContext ctx)
         {
@@ -124,8 +127,52 @@ namespace Fag_el_Gamous.Controllers
 
                 mainTbl.BurialId = id;
 
-                _context.MainTbl.Add(mainTbl);
-                _context.SaveChanges();
+                SqlConnection con = new SqlConnection(Helpers.GetRDSConnectionString());
+                //Replaced Parameters with Value
+                string query = "INSERT INTO main_tbl " +
+                    "(Burial_ID, burial_location_NS, burial_location_EW, low_pair_NS, high_pair_NS, low_pair_EW, high_pair_EW, burial_subplot, burial_number, " +
+                    "south_to_head, south_to_feet, west_to_head, west_to_feet, length_of_remains, burial_depth, " +
+                    "artifact_found, hair_color, year_found, month_found, day_found) " +
+                    "VALUES(@Burial_ID, @burial_location_NS, @burial_location_EW, @low_pair_NS, @high_pair_NS, @low_pair_EW, @high_pair_EW, @burial_subplot, @burial_number, " +
+                    "@south_to_head, @south_to_feet, @west_to_head, @west_to_feet, @length_of_remains, @burial_depth, " +
+                    "@artifact_found, @hair_color, @year_found, @month_found, @day_found)";
+                SqlCommand cmd = new SqlCommand(query, con);
+
+                //Pass values to Parameters
+                cmd.Parameters.AddWithValue("@Burial_ID", mainTbl.BurialId);
+                cmd.Parameters.AddWithValue("@burial_location_NS", mainTbl.BurialLocationNs); 
+                cmd.Parameters.AddWithValue("@burial_location_EW", mainTbl.BurialLocationEw);
+                cmd.Parameters.AddWithValue("@low_pair_NS", mainTbl.LowPairNs);
+                cmd.Parameters.AddWithValue("@high_pair_NS", mainTbl.HighPairNs);
+                cmd.Parameters.AddWithValue("@low_pair_EW", mainTbl.LowPairEw);
+                cmd.Parameters.AddWithValue("@high_pair_EW", mainTbl.LowPairNs);
+                cmd.Parameters.AddWithValue("@burial_subplot", mainTbl.BurialSubplot);
+                cmd.Parameters.AddWithValue("@burial_number", mainTbl.BurialNumber);
+                cmd.Parameters.AddWithValue("@south_to_head", mainTbl.SouthToHead);
+                cmd.Parameters.AddWithValue("@south_to_feet", mainTbl.SouthToFeet);
+                cmd.Parameters.AddWithValue("@west_to_head", mainTbl.WestToHead);
+                cmd.Parameters.AddWithValue("@west_to_feet", mainTbl.WestToFeet);
+                cmd.Parameters.AddWithValue("@length_of_remains", mainTbl.LengthOfRemains);
+                cmd.Parameters.AddWithValue("@burial_depth", mainTbl.BurialDepth);
+                cmd.Parameters.AddWithValue("@artifact_found", mainTbl.ArtifactFound);
+                cmd.Parameters.AddWithValue("@hair_color", mainTbl.HairColor);
+                cmd.Parameters.AddWithValue("@year_found", mainTbl.YearFound);
+                cmd.Parameters.AddWithValue("@month_found", mainTbl.MonthFound);
+                cmd.Parameters.AddWithValue("@day_found", mainTbl.DayFound);
+
+                try
+                {
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    Console.WriteLine("Records Inserted Successfully");
+                }
+                catch (SqlException e)
+                {
+                    Console.WriteLine("Error Generated. Details: " + e.ToString());
+                    return View();
+                }
+                con.Close();
+                
                 return RedirectToAction("BurialRecords");
             }
 
@@ -154,15 +201,66 @@ namespace Fag_el_Gamous.Controllers
         [HttpPost]
         public IActionResult Edit(MainTbl burial)
         {
-            _context.MainTbl.Remove(_context.MainTbl.Find(burial.BurialId));
-            string id = burial.BurialLocationNs + " " + burial.LowPairNs + "/" + burial.HighPairNs
-                    + " " + burial.BurialLocationEw + " " + burial.LowPairEw + "/" + burial.HighPairEw
-                    + " " + burial.BurialSubplot + " #" + burial.BurialNumber;
-            burial.BurialId = id;
-            _context.MainTbl.Add(burial);
-            _context.SaveChanges();
 
-            return RedirectToAction("BurialRecords");
+            if (ModelState.IsValid)
+            {
+                _context.MainTbl.Remove(_context.MainTbl.Find(burial.BurialId));
+                _context.SaveChanges();
+                string id = burial.BurialLocationNs + " " + burial.LowPairNs + "/" + burial.HighPairNs
+                        + " " + burial.BurialLocationEw + " " + burial.LowPairEw + "/" + burial.HighPairEw
+                        + " " + burial.BurialSubplot + " #" + burial.BurialNumber;
+                burial.BurialId = id;
+
+                SqlConnection con = new SqlConnection(Helpers.GetRDSConnectionString());
+                //Replaced Parameters with Value
+                string query = "INSERT INTO main_tbl " +
+                    "(Burial_ID, burial_location_NS, burial_location_EW, low_pair_NS, high_pair_NS, low_pair_EW, high_pair_EW, burial_subplot, burial_number, " +
+                    "south_to_head, south_to_feet, west_to_head, west_to_feet, length_of_remains, burial_depth, " +
+                    "artifact_found, hair_color, year_found, month_found, day_found) " +
+                    "VALUES(@Burial_ID, @burial_location_NS, @burial_location_EW, @low_pair_NS, @high_pair_NS, @low_pair_EW, @high_pair_EW, @burial_subplot, @burial_number, " +
+                    "@south_to_head, @south_to_feet, @west_to_head, @west_to_feet, @length_of_remains, @burial_depth, " +
+                    "@artifact_found, @hair_color, @year_found, @month_found, @day_found)";
+                SqlCommand cmd = new SqlCommand(query, con);
+
+                //Pass values to Parameters
+                cmd.Parameters.AddWithValue("@Burial_ID", burial.BurialId);
+                cmd.Parameters.AddWithValue("@burial_location_NS", burial.BurialLocationNs);
+                cmd.Parameters.AddWithValue("@burial_location_EW", burial.BurialLocationEw);
+                cmd.Parameters.AddWithValue("@low_pair_NS", burial.LowPairNs);
+                cmd.Parameters.AddWithValue("@high_pair_NS", burial.HighPairNs);
+                cmd.Parameters.AddWithValue("@low_pair_EW", burial.LowPairEw);
+                cmd.Parameters.AddWithValue("@high_pair_EW", burial.LowPairNs);
+                cmd.Parameters.AddWithValue("@burial_subplot", burial.BurialSubplot);
+                cmd.Parameters.AddWithValue("@burial_number", burial.BurialNumber);
+                cmd.Parameters.AddWithValue("@south_to_head", burial.SouthToHead);
+                cmd.Parameters.AddWithValue("@south_to_feet", burial.SouthToFeet);
+                cmd.Parameters.AddWithValue("@west_to_head", burial.WestToHead);
+                cmd.Parameters.AddWithValue("@west_to_feet", burial.WestToFeet);
+                cmd.Parameters.AddWithValue("@length_of_remains", burial.LengthOfRemains);
+                cmd.Parameters.AddWithValue("@burial_depth", burial.BurialDepth);
+                cmd.Parameters.AddWithValue("@artifact_found", burial.ArtifactFound);
+                cmd.Parameters.AddWithValue("@hair_color", burial.HairColor);
+                cmd.Parameters.AddWithValue("@year_found", burial.YearFound);
+                cmd.Parameters.AddWithValue("@month_found", burial.MonthFound);
+                cmd.Parameters.AddWithValue("@day_found", burial.DayFound);
+
+                try
+                {
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    Console.WriteLine("Records Inserted Successfully");
+                }
+                catch (SqlException e)
+                {
+                    Console.WriteLine("Error Generated. Details: " + e.ToString());
+                    return View();
+                }
+                con.Close();
+
+                return RedirectToAction("BurialRecords");
+            }
+
+            return View();
         }
 
         //once save button is pressed on the edit page, function to update the context
