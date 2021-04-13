@@ -127,6 +127,7 @@ namespace Fag_el_Gamous.Controllers
 
                 mainTbl.BurialId = id;
 
+                //parameterized queries to protect agains SQL Injection
                 SqlConnection con = new SqlConnection(Helpers.GetRDSConnectionString());
                 //Replaced Parameters with Value
                 string query = "INSERT INTO main_tbl " +
