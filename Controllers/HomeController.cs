@@ -33,7 +33,7 @@ namespace Fag_el_Gamous.Controllers
 
 
         [HttpGet]
-        public IActionResult BurialRecords(string burialLocationNS, string burialLocationEW, int lengthLow, int lengthHigh, int ageLow, int ageHigh, long yearFound, string gender, string hairColor, string searchString, int pageNum = 1)
+        public IActionResult BurialRecords(string burialLocationNS, string preservationIndex, string burialLocationEW, int lengthLow, int lengthHigh, int ageLow, int ageHigh, long yearFound, string gender, string hairColor, string searchString, int pageNum = 1)
         {
             int pageSize = 10;
             ViewBag.BurialLocationNS = _context.MainTbl.Where(t => t.BurialLocationNs != null).Select(t => t.BurialLocationNs).Distinct().OrderBy(x => x);
@@ -41,6 +41,11 @@ namespace Fag_el_Gamous.Controllers
             ViewBag.Gender = _context.MainTbl.Where(t => t.GenderBodyCol != null).Select(t => t.GenderBodyCol).Distinct().OrderBy(x => x);
             ViewBag.HairColor = _context.MainTbl.Where(t => t.HairColor != null).Select(t => t.HairColor).Distinct().OrderBy(x => x);
             ViewBag.yearFound = _context.MainTbl.Where(t => t.YearFound != null).Select(t => t.YearFound).Distinct().OrderBy(x => x);
+            ViewBag.preservationIndex = _context.MainTbl.Where(t => t.PreservationIndex != null).Select(t => t.PreservationIndex).Distinct().OrderBy(x => x);
+
+            if (searchString != null) {
+                searchString = searchString.ToLower();
+            };
 
             return View(new RecordsViewModel
             {
@@ -50,14 +55,15 @@ namespace Fag_el_Gamous.Controllers
                 .Where(t => t.BurialLocationEw == burialLocationEW || burialLocationEW == null)
                 .Where(t => t.GenderBodyCol == gender || gender == null)
                 .Where(t => t.HairColor == hairColor || hairColor == null)
+                .Where(t => t.PreservationIndex == preservationIndex || preservationIndex == null)
                 //.Where(t => t.YearFound == yearFound)
                 .Where(t => t.LengthOfRemains < lengthHigh || lengthHigh == 0)
                 .Where(t => t.LengthOfRemains > lengthLow || lengthLow == 0)
                 .Where(t => t.EstimateAge < ageHigh || ageHigh == 0)
                 .Where(t => t.EstimateAge > ageLow || ageLow == 0)
-                .Where(t => t.BurialId.Contains(searchString) ||
-                t.BurialSituation.Contains(searchString) ||
-                t.ArtifactsDescription.Contains(searchString) || searchString == null)
+                .Where(t => t.BurialId.ToLower().Contains(searchString) ||
+                t.BurialSituation.ToLower().Contains(searchString) ||
+                t.ArtifactsDescription.ToLower().Contains(searchString) || searchString == null)
                 .Skip((pageNum - 1) * pageSize)
                 .Take(pageSize)
                 .ToList()),
