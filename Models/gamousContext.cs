@@ -1,6 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
+﻿using Microsoft.EntityFrameworkCore;
 
 // Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
 // If you have enabled NRTs for your project, then un-comment the following line:
@@ -461,7 +459,7 @@ namespace Fag_el_Gamous.Models
 
             modelBuilder.Entity<MainTbl>(entity =>
             {
-                entity.HasKey(a=>new { a.BurialId });
+                entity.HasKey(a => new { a.BurialId });
 
                 entity.ToTable("main_tbl");
 

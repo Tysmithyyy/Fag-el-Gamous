@@ -1,6 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
+﻿using Microsoft.EntityFrameworkCore;
 
 // Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
 // If you have enabled NRTs for your project, then un-comment the following line:
@@ -29,7 +27,7 @@ namespace Fag_el_Gamous.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-//To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                //To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 optionsBuilder.UseSqlServer("Data Source=aam7gxxxne51of.chjpza0zaptm.us-east-1.rds.amazonaws.com,1433;Initial Catalog=gamous2;User ID=admin;Password=Admin!11;");
             }
         }
@@ -461,7 +459,7 @@ namespace Fag_el_Gamous.Models
 
             modelBuilder.Entity<MainTbl>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => e.BurialId);
 
                 entity.ToTable("main_tbl");
 

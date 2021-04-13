@@ -1,5 +1,3 @@
-using System;
-
 namespace Fag_el_Gamous.Models
 {
     public class ErrorViewModel

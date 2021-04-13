@@ -1,7 +1,6 @@
 ﻿using BetterAmazon.Models;
 using Fag_el_Gamous.Models;
 using Fag_el_Gamous.Models.ViewModels;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -9,7 +8,6 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Fag_el_Gamous.Controllers
 {
@@ -43,11 +41,12 @@ namespace Fag_el_Gamous.Controllers
             ViewBag.yearFound = _context.MainTbl.Where(t => t.YearFound != null).Select(t => t.YearFound).Distinct().OrderBy(x => x);
             ViewBag.preservationIndex = _context.MainTbl.Where(t => t.PreservationIndex != null).Select(t => t.PreservationIndex).Distinct().OrderBy(x => x);
 
-            if (searchString != null) {
+            if (searchString != null)
+            {
                 searchString = searchString.ToLower();
             };
 
-            
+
 
             return View(new RecordsViewModel
             {
@@ -141,7 +140,7 @@ namespace Fag_el_Gamous.Controllers
 
                 //Pass values to Parameters
                 cmd.Parameters.AddWithValue("@Burial_ID", mainTbl.BurialId);
-                cmd.Parameters.AddWithValue("@burial_location_NS", mainTbl.BurialLocationNs); 
+                cmd.Parameters.AddWithValue("@burial_location_NS", mainTbl.BurialLocationNs);
                 cmd.Parameters.AddWithValue("@burial_location_EW", mainTbl.BurialLocationEw);
                 cmd.Parameters.AddWithValue("@low_pair_NS", mainTbl.LowPairNs);
                 cmd.Parameters.AddWithValue("@high_pair_NS", mainTbl.HighPairNs);
@@ -155,7 +154,7 @@ namespace Fag_el_Gamous.Controllers
                 cmd.Parameters.AddWithValue("@west_to_feet", mainTbl.WestToFeet ?? (object)DBNull.Value);
                 cmd.Parameters.AddWithValue("@length_of_remains", mainTbl.LengthOfRemains ?? (object)DBNull.Value);
                 cmd.Parameters.AddWithValue("@burial_depth", mainTbl.BurialDepth ?? (object)DBNull.Value);
-                cmd.Parameters.AddWithValue("@artifact_found", mainTbl.ArtifactFound ?? (object)DBNull.Value) ;
+                cmd.Parameters.AddWithValue("@artifact_found", mainTbl.ArtifactFound ?? (object)DBNull.Value);
                 cmd.Parameters.AddWithValue("@hair_color", mainTbl.HairColor ?? (object)DBNull.Value);
                 cmd.Parameters.AddWithValue("@year_found", mainTbl.YearFound ?? (object)DBNull.Value);
                 cmd.Parameters.AddWithValue("@month_found", mainTbl.MonthFound ?? (object)DBNull.Value);
@@ -172,12 +171,12 @@ namespace Fag_el_Gamous.Controllers
                     return View();
                 }
                 con.Close();
-                
+
                 return RedirectToAction("BurialRecords");
             }
 
             return View();
-            
+
         }
 
         //when delete button is pressed, the burial_id is passed into the function and it is removed from the maintbl
@@ -190,8 +189,8 @@ namespace Fag_el_Gamous.Controllers
             return RedirectToAction("BurialRecords");
         }
 
-            //when edit button is pressed, bring in the burial ID and fill into page
-            [HttpGet]
+        //when edit button is pressed, bring in the burial ID and fill into page
+        [HttpGet]
         public IActionResult Edit(string burialid)
         {
             var burial = _context.MainTbl.Where(b => b.BurialId == burialid).FirstOrDefault();

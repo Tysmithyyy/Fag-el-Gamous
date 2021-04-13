@@ -4,10 +4,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Fag_el_Gamous.Infrastructure
 {
@@ -82,7 +79,8 @@ namespace Fag_el_Gamous.Infrastructure
                         listTag.Attributes["class"] = "page-item active";
                         individualTag.Attributes["class"] = "page-link text-light";
                     }
-                    else { 
+                    else
+                    {
                         listTag.Attributes["class"] = "page-item";
                         individualTag.Attributes["class"] = "page-link text-dark";
                     };
@@ -107,7 +105,7 @@ namespace Fag_el_Gamous.Infrastructure
             {
                 nextlistTag.Attributes["class"] = "page-item text-dark";
             };
-            
+
             KeyValuePairs["pageNum"] = PageInfo.CurrentPage + 1;
             nextindividualTag.Attributes["href"] = urlHelp.Action("BurialRecords", KeyValuePairs);
             nextindividualTag.Attributes["class"] = "page-link";
