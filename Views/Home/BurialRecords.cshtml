@@ -105,7 +105,6 @@
                     <th></th>
                     <th>Burial Location</th>
                     <th>Burial Number</th>
-                    <th>Description</th>
                     <th>Length of Remains</th>
                     <th>Artifacts Description</th>
                     <th>Hair Color</th>
@@ -131,20 +130,6 @@
                         </td>
                         <td>@x.BurialLocationNs @x.LowPairNs/@x.HighPairNs @x.BurialLocationEw @x.LowPairEw/@x.HighPairEw @x.BurialSubplot</td>
                         <td>@x.BurialNumber</td>
-                        <td>
-                            @if (x.BurialSituation != "")
-                            {
-                                <div class="dropdown">
-                                    <button class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-                                        View Description
-                                        <span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                                        <li role="presentation"><div class="menuitem text-wrap" tabindex="-1">@x.BurialSituation</div></li>
-                                    </ul>
-                                </div>
-                            }
-                        </td>
                         <td>@x.LengthOfRemains</td>
                         <td>@x.ArtifactsDescription</td>
                         <td>@x.HairColor</td>
