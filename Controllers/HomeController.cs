@@ -148,18 +148,17 @@ namespace Fag_el_Gamous.Controllers
                 cmd.Parameters.AddWithValue("@high_pair_EW", mainTbl.LowPairNs);
                 cmd.Parameters.AddWithValue("@burial_subplot", mainTbl.BurialSubplot);
                 cmd.Parameters.AddWithValue("@burial_number", mainTbl.BurialNumber);
-                cmd.Parameters.AddWithValue("@south_to_head", mainTbl.SouthToHead);
-                cmd.Parameters.AddWithValue("@south_to_feet", mainTbl.SouthToFeet);
-                cmd.Parameters.AddWithValue("@west_to_head", mainTbl.WestToHead);
-                cmd.Parameters.AddWithValue("@west_to_feet", mainTbl.WestToFeet);
-                cmd.Parameters.AddWithValue("@length_of_remains", mainTbl.LengthOfRemains);
-                cmd.Parameters.AddWithValue("@burial_depth", mainTbl.BurialDepth);
-                cmd.Parameters.AddWithValue("@artifact_found", mainTbl.ArtifactFound);
-                cmd.Parameters.AddWithValue("@hair_color", mainTbl.HairColor);
-                cmd.Parameters.AddWithValue("@year_found", mainTbl.YearFound);
-                cmd.Parameters.AddWithValue("@month_found", mainTbl.MonthFound);
-                cmd.Parameters.AddWithValue("@day_found", mainTbl.DayFound);
-
+                cmd.Parameters.AddWithValue("@south_to_head", mainTbl.SouthToHead ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("@south_to_feet", mainTbl.SouthToFeet ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("@west_to_head", mainTbl.WestToHead ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("@west_to_feet", mainTbl.WestToFeet ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("@length_of_remains", mainTbl.LengthOfRemains ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("@burial_depth", mainTbl.BurialDepth ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("@artifact_found", mainTbl.ArtifactFound ?? (object)DBNull.Value) ;
+                cmd.Parameters.AddWithValue("@hair_color", mainTbl.HairColor ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("@year_found", mainTbl.YearFound ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("@month_found", mainTbl.MonthFound ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("@day_found", mainTbl.DayFound ?? (object)DBNull.Value);
                 try
                 {
                     con.Open();
@@ -232,17 +231,17 @@ namespace Fag_el_Gamous.Controllers
                 cmd.Parameters.AddWithValue("@high_pair_EW", burial.LowPairNs);
                 cmd.Parameters.AddWithValue("@burial_subplot", burial.BurialSubplot);
                 cmd.Parameters.AddWithValue("@burial_number", burial.BurialNumber);
-                cmd.Parameters.AddWithValue("@south_to_head", burial.SouthToHead);
-                cmd.Parameters.AddWithValue("@south_to_feet", burial.SouthToFeet);
-                cmd.Parameters.AddWithValue("@west_to_head", burial.WestToHead);
-                cmd.Parameters.AddWithValue("@west_to_feet", burial.WestToFeet);
-                cmd.Parameters.AddWithValue("@length_of_remains", burial.LengthOfRemains);
-                cmd.Parameters.AddWithValue("@burial_depth", burial.BurialDepth);
-                cmd.Parameters.AddWithValue("@artifact_found", burial.ArtifactFound);
-                cmd.Parameters.AddWithValue("@hair_color", burial.HairColor);
-                cmd.Parameters.AddWithValue("@year_found", burial.YearFound);
-                cmd.Parameters.AddWithValue("@month_found", burial.MonthFound);
-                cmd.Parameters.AddWithValue("@day_found", burial.DayFound);
+                cmd.Parameters.AddWithValue("@south_to_head", burial.SouthToHead ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("@south_to_feet", burial.SouthToFeet ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("@west_to_head", burial.WestToHead ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("@west_to_feet", burial.WestToFeet ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("@length_of_remains", burial.LengthOfRemains ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("@burial_depth", burial.BurialDepth ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("@artifact_found", burial.ArtifactFound ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("@hair_color", burial.HairColor ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("@year_found", burial.YearFound ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("@month_found", burial.MonthFound ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("@day_found", burial.DayFound ?? (object)DBNull.Value);
 
                 try
                 {
