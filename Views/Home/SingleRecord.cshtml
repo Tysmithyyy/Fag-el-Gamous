@@ -3,6 +3,37 @@
 }
 @model MainTbl
 <h2>Burial Details</h2>
+@if (User.Identity.IsAuthenticated)
+{
+
+    //if logged in, edit and delete buttons will show
+    <td>
+
+        <!--edit button-->
+
+        <form asp-action="Edit" method="get">
+
+            <input type="hidden" name="BurialId"
+                   value="@Model.BurialId" />
+            <button type="submit" class="btn btn-sm btn-primary">
+                Edit
+            </button>
+        </form>
+    </td>
+
+    <td>
+        <!--delete button-->
+        <form asp-action="Delete" method="post">
+            <input type="hidden" name="BurialId"
+                   value="@Model.BurialId" />
+            <button type="submit" class="btn btn-sm btn-danger">
+                Delete
+            </button>
+        </form>
+    </td>
+
+
+}
 <div class="card">
     <!--burial location-->
     <div class="card-body">
@@ -11,7 +42,7 @@
         <p class="card-text pl-2">@Model.BurialLocationNs @Model.LowPairNs/@Model.HighPairNs @Model.BurialLocationEw @Model.LowPairEw/@Model.HighPairEw @Model.BurialSubplot</p>
 
 
-    <!--burial number-->
+        <!--burial number-->
         <h5 class="card-title text-primary">Burial Number</h5>
         <p class="card-text pl-2">@Model.BurialNumber</p>
     </div>
@@ -61,22 +92,22 @@
 
         <!--AGE-->
         <!--<div class="form-group">
-        <h5 asp-for="AGE">Estimated Age (at time of death) </h5>
-        <select class="form-control col-3" asp-for="EstimateAge">
-            <option value="">Select One</option>
-            <option value="Adult">Adult</option>
-            <option value="Child">Child</option>
-            <option value="Neonate/Infant">Infant</option>
-        </select>
-    </div>
-        -->
+            <h5 asp-for="AGE">Estimated Age (at time of death) </h5>
+            <select class="form-control col-3" asp-for="EstimateAge">
+                <option value="">Select One</option>
+                <option value="Adult">Adult</option>
+                <option value="Child">Child</option>
+                <option value="Neonate/Infant">Infant</option>
+            </select>
+        </div>
+            -->
         <!--excavation recorder-->
         <!--<div class="form-group">
-        <h5 asp-for="RecorderName">Researcher </h5>
-            <input class="form-control col-3" asp-for="RecorderName" />
+            <h5 asp-for="RecorderName">Researcher </h5>
+                <input class="form-control col-3" asp-for="RecorderName" />
 
-    </div>
-        -->
+        </div>
+            -->
         <!--Date-->
         <h5 class="card-title text-primary">Date Exhumed </h5>
         <p class="card-text pl-2">@Model.MonthFound @Model.DayFound, @Model.YearFound</p>
