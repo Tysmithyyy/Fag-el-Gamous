@@ -30,7 +30,7 @@ namespace Fag_el_Gamous.Controllers
 
 
         [HttpGet]
-        public IActionResult BurialRecords(string burialLocationNS, string preservationIndex, string burialLocationEW, int lengthLow, int lengthHigh, int ageLow, int ageHigh, long yearFound, string gender, string hairColor, string searchString, int pageNum = 1)
+        public IActionResult BurialRecords(string burialLocationNS, string preservationIndex, string burialLocationEW, int lengthLow, int lengthHigh, int ageLow, int ageHigh, long? yearFound, string gender, string hairColor, string searchString, int pageNum = 1)
         {
             int pageSize = 10;
             ViewBag.BurialLocationNS = _context.MainTbl.Where(t => t.BurialLocationNs != null).Select(t => t.BurialLocationNs).Distinct().OrderBy(x => x);
@@ -44,6 +44,8 @@ namespace Fag_el_Gamous.Controllers
                 searchString = searchString.ToLower();
             };
 
+            
+
             return View(new RecordsViewModel
             {
                 Records =
@@ -53,7 +55,7 @@ namespace Fag_el_Gamous.Controllers
                 .Where(t => t.GenderBodyCol == gender || gender == null)
                 .Where(t => t.HairColor == hairColor || hairColor == null)
                 .Where(t => t.PreservationIndex == preservationIndex || preservationIndex == null)
-                //.Where(t => t.YearFound == yearFound)
+                .Where(t => t.YearFound == yearFound || yearFound == null)
                 .Where(t => t.LengthOfRemains < lengthHigh || lengthHigh == 0)
                 .Where(t => t.LengthOfRemains > lengthLow || lengthLow == 0)
                 .Where(t => t.EstimateAge < ageHigh || ageHigh == 0)
@@ -74,6 +76,8 @@ namespace Fag_el_Gamous.Controllers
                 .Where(t => t.BurialLocationEw == burialLocationEW || burialLocationEW == null)
                 .Where(t => t.GenderBodyCol == gender || gender == null)
                 .Where(t => t.HairColor == hairColor || hairColor == null)
+                .Where(t => t.PreservationIndex == preservationIndex || preservationIndex == null)
+                .Where(t => t.YearFound == yearFound || yearFound == null)
                 .Where(t => t.LengthOfRemains < lengthHigh || lengthHigh == 0)
                 .Where(t => t.LengthOfRemains > lengthLow || lengthLow == 0)
                 .Where(t => t.EstimateAge < ageHigh || ageHigh == 0)
@@ -93,7 +97,9 @@ namespace Fag_el_Gamous.Controllers
                     lengthHigh = lengthHigh,
                     ageHigh = ageHigh,
                     ageLow = ageLow,
-                    searchString = searchString
+                    searchString = searchString,
+                    preservationIndex = preservationIndex,
+                    yearFound = yearFound
                 }
             });
         }

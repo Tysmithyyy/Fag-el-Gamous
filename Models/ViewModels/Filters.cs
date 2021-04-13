@@ -13,7 +13,7 @@ namespace Fag_el_Gamous.Models.ViewModels
         public string hairColor { get; set; }
         public int lengthHigh { get; set; }
         public int lengthLow { get; set; }
-        public long yearFound { get; set; }
+        public long? yearFound { get; set; }
         public int ageHigh { get; set; }
         public int ageLow { get; set; }
         public string searchString { get; set; }

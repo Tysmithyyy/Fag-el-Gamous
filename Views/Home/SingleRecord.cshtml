@@ -2,118 +2,66 @@
 @{
 }
 @model MainTbl
+<h2>Burial Details</h2>
+<div class="card">
+    <!--burial location-->
+    <div class="card-body">
+        <h3>Burial Location Details</h3>
+        <h5 class="card-title text-primary">Burial Location</h5>
+        <p class="card-text pl-2">@Model.BurialLocationNs @Model.LowPairNs/@Model.HighPairNs @Model.BurialLocationEw @Model.LowPairEw/@Model.HighPairEw @Model.BurialSubplot</p>
 
-
-<h3>Location of Burial</h3>
-<div class="border">
-    <!--burial location NS-->
-    <div>
-        <label>Burial Location (North/South)</label>
-        <p>@Model.BurialLocationNs</p>
-    </div>
-
-    <!--burial location EW-->
-    <div>
-        <label>Burial Location (East/West)</label>
-        <p>@Model.BurialLocationEw</p>
-    </div>
-
-    <!--low pair NS-->
-    <div>
-        <label>Low pair (North/South)</label>
-        <p>@Model.LowPairNs</p>
-    </div>
-
-    <!--high pair NS-->
-    <div>
-        <label>High pair (North/South)</label>
-        <p>@Model.HighPairNs</p>
-    </div>
-
-    <!--low pair EW-->
-    <div>
-        <label>Low pair (East/West)</label>
-        <p>@Model.LowPairEw</p>
-    </div>
-
-    <!--high pair EW-->
-    <div>
-        <label>High pair (East/West)</label>
-        <p>@Model.HighPairEw</p>
-    </div>
-
-    <!--burial subplot-->
-    <div>
-        <label>Burial Subplot</label>
-        <p>@Model.BurialSubplot</p>
-    </div>
 
     <!--burial number-->
-    <div>
-        <label>Burial Number</label>
-        <p>@Model.BurialNumber</p>
+        <h5 class="card-title text-primary">Burial Number</h5>
+        <p class="card-text pl-2">@Model.BurialNumber</p>
     </div>
 
 </div>
 
-
-<h3>Orientation of Burial</h3>
-<div class="border">
+<div class="card">
     <!--south to head-->
-    <div>
-        <label>South to Head </label>
-        <p>@Model.SouthToHead</p>
-    </div>
+    <div class="card-body">
+        <h3>Orientation of Burial</h3>
+        <h5 class="card-title text-primary">South to Head </h5>
+        <p class="card-text pl-2">@Model.SouthToHead</p>
 
-    <!--south to feet-->
-    <div>
-        <label>South to Feet </label>
-        <p>@Model.SouthToFeet</p>
-    </div>
+        <!--south to feet-->
 
-    <!--east to head-->
-    <div>
-        <label>East to Head </label>
-        <p>@Model.WestToHead</p>
-    </div>
+        <h5 class="card-title text-primary">South to Feet </h5>
+        <p class="card-text pl-2">@Model.SouthToFeet</p>
 
-    <!--east to feet-->
-    <div>
-        <label>East to Feet </label>
-        <p>@Model.WestToFeet</p>
-    </div>
+        <!--east to head-->
+        <h5 class="card-title text-primary">East to Head </h5>
+        <p class="card-text pl-2">@Model.WestToHead</p>
 
-    <!--legnth-->
-    <div>
-        <label>Length of Remains</label>
-        <p>@Model.LengthOfRemains</p>
-    </div>
-    <!--depth-->
-    <div>
-        <label>Burial Depth </label>
-        <p>@Model.BurialDepth</p>
-    </div>
+        <!--east to feet-->
+        <h5 class="card-title text-primary">East to Feet </h5>
+        <p class="card-text pl-2">@Model.WestToFeet</p>
 
+        <!--legnth-->
+        <h5 class="card-title text-primary">Length of Remains</h5>
+        <p class="card-text pl-2">@Model.LengthOfRemains</p>
+        <!--depth-->
+        <h5 class="card-title text-primary">Burial Depth </h5>
+        <p class="card-text pl-2">@Model.BurialDepth</p>
+
+    </div>
 </div>
 
-<h3>Miscellaneous Information </h3>
-<div class="border">
+<div class="card">
     <!--photo yes no-->
     <!--burial goods yes no (references artifact found)-->
-    <div>
-        <label>Artifact Found? </label>
-        <p>@Model.ArtifactFound</p>
-    </div>
+    <div class="card-body">
+        <h3>Miscellaneous Information </h3>
+        <h5 class="card-title text-primary">Artifact Found? </h5>
+        <p class="card-text pl-2">@Model.ArtifactFound</p>
+        <!--Hair color-->
+        <h5 class="card-title text-primary">Hair color or specimen </h5>
+        <p class="card-text pl-2">@Model.HairColor</p>
 
-    <!--Hair color-->
-    <div>
-        <label>Hair color or specimen </label>
-        <p>@Model.HairColor</p>
-    </div>
-
-    <!--AGE-->
-    <!--<div class="form-group">
-        <label asp-for="AGE">Estimated Age (at time of death) </label>
+        <!--AGE-->
+        <!--<div class="form-group">
+        <h5 asp-for="AGE">Estimated Age (at time of death) </h5>
         <select class="form-control col-3" asp-for="EstimateAge">
             <option value="">Select One</option>
             <option value="Adult">Adult</option>
@@ -122,26 +70,15 @@
         </select>
     </div>
         -->
-    <!--excavation recorder-->
-    <!--<div class="form-group">
-        <label asp-for="RecorderName">Researcher </label>
+        <!--excavation recorder-->
+        <!--<div class="form-group">
+        <h5 asp-for="RecorderName">Researcher </h5>
             <input class="form-control col-3" asp-for="RecorderName" />
 
     </div>
         -->
-    <!--Date-->
-    <div>
-        <label>Year Exhumed </label>
-        <p>@Model.YearFound</p>
-    </div>
-
-    <div>
-        <label>Month Exhumed </label>
-        <p>@Model.MonthFound</p>
-    </div>
-
-    <div>
-        <label>Day Exhumed </label>
-        <p>@Model.DayFound</p>
+        <!--Date-->
+        <h5 class="card-title text-primary">Date Exhumed </h5>
+        <p class="card-text pl-2">@Model.MonthFound @Model.DayFound, @Model.YearFound</p>
     </div>
 </div>
