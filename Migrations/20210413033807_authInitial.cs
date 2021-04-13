@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Fag_el_Gamous.Migrations
 {
-    public partial class auth : Migration
+    public partial class authInitial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
