@@ -17,7 +17,7 @@
             <!--burial location NS-->
             <div>
                 <label asp-for="BurialLocationNs">Burial Location (North/South)</label>
-                <select class="form-control" asp-for="BurialLocationNs">
+                <select class="form-control" asp-for="BurialLocationNs" required>
                     <option value="">Select One</option>
                     <option value="N">North</option>
                     <option value="S">South</option>
@@ -27,7 +27,7 @@
             <!--burial location EW-->
             <div>
                 <label asp-for="BurialLocationEw">Burial Location (East/West)</label>
-                <select class="form-control" asp-for="BurialLocationEw">
+                <select class="form-control" asp-for="BurialLocationEw" required>
                     <option value="">Select One</option>
                     <option value="E">East</option>
                     <option value="W">West</option>
@@ -37,31 +37,31 @@
             <!--low pair NS-->
             <div>
                 <label asp-for="LowPairNs">Low pair (North/South)</label>
-                <input class="form-control" asp-for="LowPairNs" />
+                <input class="form-control" asp-for="LowPairNs" required/>
             </div>
 
             <!--high pair NS-->
             <div>
                 <label asp-for="HighPairNs">High pair (North/South)</label>
-                <input class="form-control" asp-for="HighPairNs" />
+                <input class="form-control" asp-for="HighPairNs" required/>
             </div>
 
             <!--low pair EW-->
             <div>
                 <label asp-for="LowPairEw">Low pair (East/West)</label>
-                <input class="form-control" asp-for="LowPairEw" />
+                <input class="form-control" asp-for="LowPairEw" required/>
             </div>
 
             <!--high pair EW-->
             <div>
                 <label asp-for="HighPairEw">High pair (East/West)</label>
-                <input class="form-control" asp-for="HighPairEw" />
+                <input class="form-control" asp-for="HighPairEw" required/>
             </div>
 
             <!--burial subplot-->
             <div>
                 <label asp-for="BurialSubplot">Burial Subplot</label>
-                <select class="form-control" asp-for="BurialSubplot">
+                <select class="form-control" asp-for="BurialSubplot" required>
                     <option value="">Select One</option>
                     <option value="NE">Northeast</option>
                     <option value="NW">Northwest</option>
@@ -73,7 +73,7 @@
             <!--burial number-->
             <div>
                 <label asp-for="BurialNumber">Burial Number</label>
-                <input class="form-control" asp-for="BurialNumber" />
+                <input class="form-control" asp-for="BurialNumber" required/>
             </div>
 
         </div>
